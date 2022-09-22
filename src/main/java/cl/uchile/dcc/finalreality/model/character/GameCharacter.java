@@ -1,5 +1,5 @@
 package cl.uchile.dcc.finalreality.model.character;
-// wenas, saludos//
+
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 
 /**
