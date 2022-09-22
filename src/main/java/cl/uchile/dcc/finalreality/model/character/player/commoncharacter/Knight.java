@@ -41,16 +41,34 @@ public class Knight extends AbstractPlayerCharacter {
     super(name, maxHp, defense, turnsQueue);
   }
 
+  /**
+   * Returns a string with info about the fields of a Knight
+   *
+   * @return a string with info about the Knight
+   */
   @Override
   public String toString() {
     return "Knight{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
 
+  /**
+   * Returns a hash code based on the Knight's fields
+   *
+   * @return an integer representing the hashcode of a Knight
+   */
   @Override
   public int hashCode() {
     return Objects.hash(Knight.class, name, maxHp, defense);
   }
 
+  /**
+   * Checks if two objects are equal Knights or not
+   *
+   * @param o
+   *    object which will be compared to the Knight
+   *
+   * @return boolean: True if they are equivalent Knight or otherwise False
+   */
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {

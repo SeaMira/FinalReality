@@ -9,8 +9,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A class that holds all the information of a single enemy of the game.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Sebastian Mira~
  */
 public class Enemy extends AbstractCharacter {
 
@@ -30,11 +29,23 @@ public class Enemy extends AbstractCharacter {
 
   /**
    * Returns the weight of this enemy.
+   *
+   * @return
+   *    the weight of the Enemy
+   *
    */
   public int getWeight() {
     return weight;
   }
 
+  /**
+   * Checks if two objects are equal Enemies or not
+   *
+   * @param o
+   *    object which will be compared to the Enemy
+   *
+   * @return boolean: True if they are equivalent Enemies or otherwise False
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -50,6 +61,12 @@ public class Enemy extends AbstractCharacter {
         && defense == enemy.defense;
   }
 
+  /**
+   * Returns a hash code based on the Enemy's fields
+   *
+   * @return
+   *    an integer representing the hashcode of an Enemy
+   */
   @Override
   public int hashCode() {
     return Objects.hash(Enemy.class, name, weight, maxHp, defense);

@@ -45,11 +45,24 @@ public class Thief extends AbstractPlayerCharacter {
     super(name, maxHp, defense, turnsQueue);
   }
 
+  /**
+   * Returns a hash code based on the Thief's fields
+   *
+   * @return an integer representing the hashcode of a Tjief
+   */
   @Override
   public int hashCode() {
     return Objects.hash(Thief.class, name, maxHp, defense);
   }
 
+  /**
+   * Checks if two objects are equal Thieves or not
+   *
+   * @param o
+   *    object which will be compared to the Thief
+   *
+   * @return boolean: True if they are equivalent Thieves or otherwise False
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -64,6 +77,11 @@ public class Thief extends AbstractPlayerCharacter {
         && defense == that.defense;
   }
 
+  /**
+   * Returns a string with info about the fields of a Thief
+   *
+   * @return a string with info about the Thief
+   */
   @Override
   public String toString() {
     return "Thief{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);

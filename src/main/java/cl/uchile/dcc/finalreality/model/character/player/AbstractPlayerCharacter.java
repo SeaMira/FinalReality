@@ -22,8 +22,7 @@ import org.jetbrains.annotations.NotNull;
  * ({@code maxHp}), a {@code defense} value, a queue of {@link GameCharacter}s that are
  * waiting for their turn ({@code turnsQueue}), and can equip a {@link Weapon}.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Sebastian Mira~
  */
 public abstract class AbstractPlayerCharacter extends AbstractCharacter implements
     PlayerCharacter {
@@ -49,11 +48,23 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     super(name, maxHp, defense, turnsQueue);
   }
 
+  /**
+   * Equips a character with a weapon.
+   *
+   * @param weapon
+   *    a {@link Weapon} that'll be equipped to the character
+   */
   @Override
   public void equip(Weapon weapon) {
     this.equippedWeapon = weapon;
   }
 
+  /**
+   *  Gets the weapon the character has equipped.
+   *
+   * @return
+   *    the {@link Weapon} that the character is equipped with
+   */
   @Override
   public Weapon getEquippedWeapon() {
     return equippedWeapon;

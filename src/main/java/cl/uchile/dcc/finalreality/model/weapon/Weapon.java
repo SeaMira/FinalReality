@@ -5,15 +5,13 @@ import java.util.Objects;
 /**
  * A class that holds all the information of a weapon.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Sebastian Mira~
  */
-public class Weapon {
+public abstract class Weapon {
 
   private final String name;
   private final int damage;
   private final int weight;
-  private final WeaponType type;
 
   /**
    * Creates a weapon with a name, a base damage, speed, and it's type.
@@ -23,14 +21,23 @@ public class Weapon {
     this.name = name;
     this.damage = damage;
     this.weight = weight;
-    this.type = type;
   }
 
-  private String getName() {
+  /**
+   * Returns the name Weapon
+   *
+   * @return string of the name of the Weapon
+   */
+  public String getName() {
     return name;
   }
 
-  private int getDamage() {
+  /**
+   * Returns the damage that the Weapon deals.
+   *
+   * @return integer of the damage of the Weapon
+   */
+  public int getDamage() {
     return damage;
   }
 
@@ -41,9 +48,14 @@ public class Weapon {
     return weight;
   }
 
-  private WeaponType getType() {
-    return type;
-  }
+  /**
+   * Checks if two objects are equal Weapons or not
+   *
+   * @param o
+   *    object which will be compared to the Weapon
+   *
+   * @return boolean: True if they are equivalent Weapons or otherwise False
+   */
 
   @Override
   public boolean equals(final Object o) {
@@ -56,18 +68,27 @@ public class Weapon {
     return hashCode() == weapon.hashCode()
         && damage == weapon.damage
         && weight == weapon.weight
-        && name.equals(weapon.name)
-        && type == weapon.type;
+        && name.equals(weapon.name);
   }
 
+  /**
+   * Returns a hash code based on the Weapon's fields
+   *
+   * @return an integer representing the hashcode of a Weapon
+   */
   @Override
   public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight, type);
+    return Objects.hash(Weapon.class, name, damage, weight);
   }
 
+  /**
+   * Returns a string with info about the fields of a Weapon
+   *
+   * @return a string with info about the Weapon
+   */
   @Override
   public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
-        .formatted(name, damage, weight, type);
+    return "Weapon{name='%s', damage=%d, weight=%d}"
+        .formatted(name, damage, weight);
   }
 }

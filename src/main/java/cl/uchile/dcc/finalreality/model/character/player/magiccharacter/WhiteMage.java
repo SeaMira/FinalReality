@@ -22,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A White Mage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
  * @author ~Sebastian Mira~
  */
 public class WhiteMage extends MagicCharacter {
@@ -50,36 +49,15 @@ public class WhiteMage extends MagicCharacter {
   }
 
 
-  // region : ACCESSORS
-  /**
-   * Returns the current MP of the character.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
-   * Sets the current MP of the character to {@code newMp}.
-   *
-   * @param newMp
-   *    new value for current MP
-   */
-  public void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
-  }
-
-  /**
-   * Returns the max MP of the character.
-   */
-  public int getMaxMp() {
-    return maxMp;
-  }
-  // endregion
-
-
   // region : UTILITY METHODS
+  /**
+   * Checks if two objects are equal white mages or not
+   *
+   * @param o
+   *    object which will be compared to the white mage
+   *
+   * @return Bool: True if they are equivalent white mages or otherwise False
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -95,11 +73,22 @@ public class WhiteMage extends MagicCharacter {
             && defense == that.defense;
   }
 
+  /**
+   * Returns a hash code based on the white mages fields
+   *
+   * @return an integer representing the hashcode of a white mage
+   */
   @Override
   public int hashCode() {
     return Objects.hash(WhiteMage.class, name, maxHp, defense, maxMp);
   }
 
+
+  /**
+   * Returns a string with info about the fields of a White Mage
+   *
+   * @return a string with info about the White Mage
+   */
   @Override
   public String toString() {
     return "WhiteMage{maxMp=%d, maxHp=%d, defense=%d, name='%s'}"

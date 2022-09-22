@@ -11,7 +11,6 @@ import java.util.concurrent.BlockingQueue;
  * A MagicCharacter is a {@link AbstractPlayerCharacter} that can equip {@code Staff}s and use <i>magic</i> "paying" with magic mana points .
  *
  * @author ~Sebastian Mira~
- * @version 2.0
  */
 public abstract class MagicCharacter extends AbstractPlayerCharacter{
     protected int currentMp;
@@ -39,5 +38,33 @@ public abstract class MagicCharacter extends AbstractPlayerCharacter{
         this.maxMp = maxMp;
         this.currentMp = maxMp;
     }
+
+    // region : ACCESSORS
+    /**
+     * Returns the current MP of the character.
+     */
+    public int getCurrentMp() {
+        return currentMp;
+    }
+
+    /**
+     * Sets the current MP of the character to {@code newMp}.
+     *
+     * @param newMp
+     *    new value for current MP
+     */
+    public void setCurrentMp(final int newMp) throws InvalidStatValueException {
+        Require.statValueAtLeast(0, newMp, "Current MP");
+        Require.statValueAtMost(maxMp, newMp, "Current MP");
+        this.currentMp = newMp;
+    }
+
+    /**
+     * Returns the max MP of the character.
+     */
+    public int getMaxMp() {
+        return maxMp;
+    }
+    // endregion
 
 }

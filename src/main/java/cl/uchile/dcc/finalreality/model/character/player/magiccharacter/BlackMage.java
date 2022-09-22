@@ -21,8 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A BlackMage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>black magic</i>..
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Sebastian Mira~
  */
 public class BlackMage extends MagicCharacter {
 
@@ -38,7 +37,7 @@ public class BlackMage extends MagicCharacter {
    * @param turnsQueue
    *     the queue with the characters waiting for their turn
    * @param maxMp
-   *    *     the maximum amount of mana the character can have
+   *     the maximum amount of mana the character can have
    */
   protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
@@ -47,36 +46,17 @@ public class BlackMage extends MagicCharacter {
 
   }
 
-  // region : ACCESSORS
-
-  /**
-   * Returns the character's current MP.
-   */
-  public int getCurrentMp() {
-    return currentMp;
-  }
-
-  /**
-   * Sets the current MP of the character to {@code newMp}.
-   *
-   * @param newMp
-   *    *    new value for current MP
-   */
-  private void setCurrentMp(final int newMp) throws InvalidStatValueException {
-    Require.statValueAtLeast(0, newMp, "Current MP");
-    Require.statValueAtMost(maxMp, newMp, "Current MP");
-    this.currentMp = newMp;
-  }
-
-  /**
-   * Returns the character's max MP.
-   */
-  public int getMaxMp() {
-    return maxMp;
-  }
-  // endregion
 
   // region : UTILITY METHODS
+
+  /**
+   * Checks if two objects are equal black mages or not
+   *
+   * @param o
+   *    object which will be compared to the black mage
+   *
+   * @return boolean: True if they are equivalent black mages or otherwise False
+   */
   @Override
   public boolean equals(final Object o) {
     if (this == o) {
@@ -92,12 +72,21 @@ public class BlackMage extends MagicCharacter {
         && maxMp == that.maxMp;
   }
 
+  /**
+   * Returns a string with info about the fields of a Black Mage
+   *
+   * @return a string with info about the Black Mage
+   */
   @Override
   public String toString() {
     return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
         .formatted(currentMp, maxMp, maxHp, defense, name);
   }
-
+  /**
+   * Returns a hash code based on the black mages fields
+   *
+   * @return an integer representing the hashcode of a Black Mage
+   */
   @Override
   public int hashCode() {
     return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);

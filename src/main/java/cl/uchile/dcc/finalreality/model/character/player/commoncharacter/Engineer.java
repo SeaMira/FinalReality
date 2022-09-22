@@ -21,8 +21,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * A {@link PlayerCharacter} that can equip {@code Axe}s and {@code Bow}s.
  *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * @author ~Sebastian Mira~
  */
 public class Engineer extends AbstractPlayerCharacter {
 
@@ -45,16 +44,34 @@ public class Engineer extends AbstractPlayerCharacter {
     super(name, maxHp, defense, turnsQueue);
   }
 
+  /**
+   * Returns a string with info about the fields of an Engineer
+   *
+   * @return a string with info about the Engineer
+   */
   @Override
   public String toString() {
     return "Engineer{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
   }
 
+  /**
+   * Returns a hash code based on the Engineer's fields
+   *
+   * @return an integer representing the hashcode of an Engineer
+   */
   @Override
   public int hashCode() {
     return Objects.hash(Engineer.class, name, maxHp, defense);
   }
 
+  /**
+   * Checks if two objects are equal engineers or not
+   *
+   * @param o
+   *    object which will be compared to the Engineer
+   *
+   * @return boolean: True if they are equivalent Engineers or otherwise False
+   */
   @Override
   public boolean equals(final Object obj) {
     if (this == obj) {
