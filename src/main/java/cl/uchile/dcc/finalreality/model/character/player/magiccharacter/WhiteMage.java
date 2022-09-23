@@ -11,16 +11,15 @@ package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A White Mage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>white magic</i>.
+ * A White Mage is a {@link MagicCharacter} that can use <i>white magic</i>.
  *
  * @author ~Sebastian Mira~
  */
@@ -45,16 +44,16 @@ public class WhiteMage extends MagicCharacter {
   protected WhiteMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
-    super(name, maxHp, defense, maxMp,turnsQueue);
+    super(name, maxHp, defense, maxMp, turnsQueue);
   }
 
 
   // region : UTILITY METHODS
   /**
-   * Checks if two objects are equal white mages or not
+   * Checks if two objects are equal white mages or not.
    *
    * @param o
-   *    object which will be compared to the white mage
+   *     object which will be compared to the white mage
    *
    * @return Bool: True if they are equivalent white mages or otherwise False
    */
@@ -74,7 +73,7 @@ public class WhiteMage extends MagicCharacter {
   }
 
   /**
-   * Returns a hash code based on the white mages fields
+   * Returns a hash code based on the white mages fields.
    *
    * @return an integer representing the hashcode of a white mage
    */
@@ -85,7 +84,7 @@ public class WhiteMage extends MagicCharacter {
 
 
   /**
-   * Returns a string with info about the fields of a White Mage
+   * Returns a string with info about the fields of a White Mage.
    *
    * @return a string with info about the White Mage
    */

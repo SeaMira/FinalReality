@@ -26,7 +26,7 @@ public abstract class Weapon {
   }
 
   /**
-   * Returns the name Weapon
+   * Returns the name Weapon.
    *
    * @return string of the name of the Weapon
    */
@@ -49,16 +49,19 @@ public abstract class Weapon {
   public int getWeight() {
     return weight;
   }
+
   /**
    * Returns the type of the weapon.
    */
-  public WeaponType getType() { return type; }
+  public WeaponType getType() {
+    return type;
+  }
 
   /**
-   * Checks if two objects are equal Weapons or not
+   * Checks if two objects are equal Weapons or not.
    *
    * @param o
-   *    object which will be compared to the Weapon
+   *     object which will be compared to the Weapon
    *
    * @return boolean: True if they are equivalent Weapons or otherwise False
    */
@@ -79,7 +82,7 @@ public abstract class Weapon {
   }
 
   /**
-   * Returns a hash code based on the Weapon's fields
+   * Returns a hash code based on the Weapon's fields.
    *
    * @return an integer representing the hashcode of a Weapon
    */
@@ -89,7 +92,7 @@ public abstract class Weapon {
   }
 
   /**
-   * Returns a string with info about the fields of a Weapon
+   * Returns a string with info about the fields of a Weapon.
    *
    * @return a string with info about the Weapon
    */

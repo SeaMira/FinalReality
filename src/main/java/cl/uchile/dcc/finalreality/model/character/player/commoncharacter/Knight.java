@@ -10,12 +10,12 @@ package cl.uchile.dcc.finalreality.model.character.player.commoncharacter;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A {@link PlayerCharacter} that can equip {@code Sword}s,{@code Knife}s and
@@ -42,7 +42,7 @@ public class Knight extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a string with info about the fields of a Knight
+   * Returns a string with info about the fields of a Knight.
    *
    * @return a string with info about the Knight
    */
@@ -52,7 +52,7 @@ public class Knight extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a hash code based on the Knight's fields
+   * Returns a hash code based on the Knight's fields.
    *
    * @return an integer representing the hashcode of a Knight
    */
@@ -62,10 +62,10 @@ public class Knight extends AbstractPlayerCharacter {
   }
 
   /**
-   * Checks if two objects are equal Knights or not
+   * Checks if two objects are equal Knights or not.
    *
-   * @param o
-   *    object which will be compared to the Knight
+   * @param obj
+   *     object which will be compared to the Knight
    *
    * @return boolean: True if they are equivalent Knight or otherwise False
    */

@@ -11,15 +11,14 @@ package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * A BlackMage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>black magic</i>..
+ * A BlackMage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>black magic</i>.
  *
  * @author ~Sebastian Mira~
  */
@@ -50,10 +49,10 @@ public class BlackMage extends MagicCharacter {
   // region : UTILITY METHODS
 
   /**
-   * Checks if two objects are equal black mages or not
+   * Checks if two objects are equal black mages or not.
    *
    * @param o
-   *    object which will be compared to the black mage
+   *     object which will be compared to the black mage
    *
    * @return boolean: True if they are equivalent black mages or otherwise False
    */
@@ -73,7 +72,7 @@ public class BlackMage extends MagicCharacter {
   }
 
   /**
-   * Returns a string with info about the fields of a Black Mage
+   * Returns a string with info about the fields of a Black Mage.
    *
    * @return a string with info about the Black Mage
    */
@@ -82,8 +81,9 @@ public class BlackMage extends MagicCharacter {
     return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
         .formatted(currentMp, maxMp, maxHp, defense, name);
   }
+
   /**
-   * Returns a hash code based on the black mages fields
+   * Returns a hash code based on the black mages fields.
    *
    * @return an integer representing the hashcode of a Black Mage
    */

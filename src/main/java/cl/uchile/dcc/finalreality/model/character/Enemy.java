@@ -31,7 +31,7 @@ public class Enemy extends AbstractCharacter {
    * Returns the weight of this enemy.
    *
    * @return
-   *    the weight of the Enemy
+   *     the weight of the Enemy
    *
    */
   public int getWeight() {
@@ -39,10 +39,10 @@ public class Enemy extends AbstractCharacter {
   }
 
   /**
-   * Checks if two objects are equal Enemies or not
+   * Checks if two objects are equal Enemies or not.
    *
    * @param o
-   *    object which will be compared to the Enemy
+   *     object which will be compared to the Enemy
    *
    * @return boolean: True if they are equivalent Enemies or otherwise False
    */
@@ -62,10 +62,10 @@ public class Enemy extends AbstractCharacter {
   }
 
   /**
-   * Returns a hash code based on the Enemy's fields
+   * Returns a hash code based on the Enemy's fields.
    *
    * @return
-   *    an integer representing the hashcode of an Enemy
+   *     an integer representing the hashcode of an Enemy
    */
   @Override
   public int hashCode() {

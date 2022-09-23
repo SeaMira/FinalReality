@@ -10,12 +10,12 @@ package cl.uchile.dcc.finalreality.model.character.player.commoncharacter;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+
 
 
 /**
@@ -45,7 +45,7 @@ public class Engineer extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a string with info about the fields of an Engineer
+   * Returns a string with info about the fields of an Engineer.
    *
    * @return a string with info about the Engineer
    */
@@ -55,7 +55,7 @@ public class Engineer extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a hash code based on the Engineer's fields
+   * Returns a hash code based on the Engineer's fields.
    *
    * @return an integer representing the hashcode of an Engineer
    */
@@ -65,10 +65,10 @@ public class Engineer extends AbstractPlayerCharacter {
   }
 
   /**
-   * Checks if two objects are equal engineers or not
+   * Checks if two objects are equal engineers or not.
    *
-   * @param o
-   *    object which will be compared to the Engineer
+   * @param obj
+   *     object which will be compared to the Engineer
    *
    * @return boolean: True if they are equivalent Engineers or otherwise False
    */

@@ -52,7 +52,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    * Equips a character with a weapon.
    *
    * @param weapon
-   *    a {@link Weapon} that'll be equipped to the character
+   *      a {@link Weapon} that'll be equipped to the character
    */
   @Override
   public void equip(Weapon weapon) {
@@ -63,7 +63,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
    *  Gets the weapon the character has equipped.
    *
    * @return
-   *    the {@link Weapon} that the character is equipped with
+   *     the {@link Weapon} that the character is equipped with
    */
   @Override
   public Weapon getEquippedWeapon() {

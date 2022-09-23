@@ -10,12 +10,12 @@ package cl.uchile.dcc.finalreality.model.character.player.commoncharacter;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
-import java.util.concurrent.BlockingQueue;
-
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A {@link PlayerCharacter} that can equip {@code Sword}s,{@code Knife}s and
@@ -46,7 +46,7 @@ public class Thief extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a hash code based on the Thief's fields
+   * Returns a hash code based on the Thief's fields.
    *
    * @return an integer representing the hashcode of a Tjief
    */
@@ -56,10 +56,10 @@ public class Thief extends AbstractPlayerCharacter {
   }
 
   /**
-   * Checks if two objects are equal Thieves or not
+   * Checks if two objects are equal Thieves or not.
    *
    * @param o
-   *    object which will be compared to the Thief
+   *     object which will be compared to the Thief
    *
    * @return boolean: True if they are equivalent Thieves or otherwise False
    */
@@ -78,7 +78,7 @@ public class Thief extends AbstractPlayerCharacter {
   }
 
   /**
-   * Returns a string with info about the fields of a Thief
+   * Returns a string with info about the fields of a Thief.
    *
    * @return a string with info about the Thief
    */
