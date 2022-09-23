@@ -3,24 +3,26 @@ package cl.uchile.dcc.finalreality.model.weapon;
 import java.util.Objects;
 
 /**
- * A class that holds all the information of a weapon.
+ * A class that holds all the general information of a weapon.
  *
  * @author ~Sebastian Mira~
  */
 public abstract class Weapon {
 
-  private final String name;
-  private final int damage;
-  private final int weight;
+  protected final String name;
+  protected final int damage;
+  protected final int weight;
+  protected final WeaponType type;
 
   /**
-   * Creates a weapon with a name, a base damage, speed, and it's type.
+   * Creates a weapon with a name, a base damage, speed/weight, and it's type.
    */
   public Weapon(final String name, final int damage, final int weight,
       final WeaponType type) {
     this.name = name;
     this.damage = damage;
     this.weight = weight;
+    this.type = type;
   }
 
   /**
@@ -47,6 +49,10 @@ public abstract class Weapon {
   public int getWeight() {
     return weight;
   }
+  /**
+   * Returns the type of the weapon.
+   */
+  public WeaponType getType() { return type; }
 
   /**
    * Checks if two objects are equal Weapons or not
@@ -66,9 +72,10 @@ public abstract class Weapon {
       return false;
     }
     return hashCode() == weapon.hashCode()
-        && damage == weapon.damage
-        && weight == weapon.weight
-        && name.equals(weapon.name);
+        && this.getDamage() == weapon.getDamage()
+        && this.getWeight() == weapon.getWeight()
+        && this.getName().equals(weapon.getName())
+        && this.getType().equals(weapon.getType());
   }
 
   /**
@@ -78,7 +85,7 @@ public abstract class Weapon {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight);
+    return Objects.hash(Weapon.class, name, damage, weight, type);
   }
 
   /**
@@ -88,7 +95,7 @@ public abstract class Weapon {
    */
   @Override
   public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d}"
-        .formatted(name, damage, weight);
+    return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
+        .formatted(name, damage, weight, type);
   }
 }
