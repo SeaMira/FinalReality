@@ -36,10 +36,10 @@ public class Bow extends Weapon {
       return false;
     }
     return hashCode() == bow.hashCode()
-            && this.getDamage() == bow.getDamage()
-            && this.getWeight() == bow.getWeight()
-            && this.getName().equals(bow.getName())
-            && this.getType().equals(bow.getType());
+            && this.damage == bow.getDamage()
+            && this.weight == bow.getWeight()
+            && this.name.equals(bow.getName())
+            && this.type.equals(bow.getType());
   }
 
   /**

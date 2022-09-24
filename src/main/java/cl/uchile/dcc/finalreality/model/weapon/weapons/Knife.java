@@ -14,6 +14,13 @@ import java.util.Objects;
 public class Knife extends Weapon {
 
   /**
+   * Creates a Knife with a name, a base damage, speed/weight and being a Knife type.
+   */
+  public Knife(final String name, final int damage, final int weight) {
+    super(name, damage, weight, WeaponType.KNIFE);
+  }
+
+  /**
   * Checks if two objects are equal Knives or not.
   *
   * @param o
@@ -59,11 +66,6 @@ public class Knife extends Weapon {
           .formatted(name, damage, weight, type);
   }
 
-  /**
-  * Creates a Knife with a name, a base damage, speed/weight and being a Knife type.
-  */
-  public Knife(final String name, final int damage, final int weight) {
-    super(name, damage, weight, WeaponType.KNIFE);
-  }
+
 
 }

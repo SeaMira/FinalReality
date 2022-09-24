@@ -35,10 +35,10 @@ public class Axe extends Weapon {
       return false;
     }
     return hashCode() == axe.hashCode()
-                && this.getDamage() == axe.getDamage()
-                && this.getWeight() == axe.getWeight()
-                && this.getName().equals(axe.getName())
-                && this.getType().equals(axe.getType());
+                && this.damage == axe.getDamage()
+                && this.weight == axe.getWeight()
+                && this.name.equals(axe.getName())
+                && this.type.equals(axe.getType());
   }
 
   /**

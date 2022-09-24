@@ -79,7 +79,7 @@ public class BlackMage extends MagicCharacter {
   @Override
   public String toString() {
     return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-        .formatted(currentMp, maxMp, maxHp, defense, name);
+        .formatted(getCurrentMp(), getMaxMp(), getCurrentHp(), getMaxHp(), getDefense(), getName());
   }
 
   /**
@@ -89,7 +89,7 @@ public class BlackMage extends MagicCharacter {
    */
   @Override
   public int hashCode() {
-    return Objects.hash(BlackMage.class, name, maxHp, defense, maxMp);
+    return Objects.hash(BlackMage.class, getName(), getMaxHp(), getDefense(), getMaxMp());
   }
   // endregion
 }
