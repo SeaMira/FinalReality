@@ -1,7 +1,9 @@
 package cl.uchile.dcc.finalreality;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Thief;
@@ -54,6 +56,10 @@ public class Main {
     BlackMage  blackmage2 = new BlackMage("blackmage 2", 55, 65, 75, queue);
     BlackMage  blackmage3 = new BlackMage("blackmage 1", 50, 60, 70, queue);
 
+    // Enemy
+    Enemy enemy1 = new Enemy("enemy1", 30, 50, 67, queue);
+    Enemy enemy2 = new Enemy("enemy2", 35, 55, 68, queue);
+    Enemy enemy3 = new Enemy("enemy1", 30, 50, 67, queue);
     // Weapons
     //Non magic weapons
     Sword sword1 = new Sword("sword 1", 50, 40);
@@ -113,6 +119,13 @@ public class Main {
     System.out.println(blackmage1.getCurrentMp());
     System.out.println(blackmage1.getMaxMp());
 
+    System.out.println("Enemy name, defense, currentHp, maxHp, weight");
+    System.out.println(enemy1.getName());
+    System.out.println(enemy1.getDefense());
+    System.out.println(enemy1.getCurrentHp());
+    System.out.println(enemy1.getMaxHp());
+    System.out.println(enemy1.getWeight());
+
     System.out.println("Sword name, weight, damage, type");
     System.out.println(sword1.getName());
     System.out.println(sword1.getWeight());
@@ -143,6 +156,8 @@ public class Main {
     System.out.println(staff1.getDamage());
     System.out.println(staff1.getMagicdamage());
     System.out.println(staff1.getType());
+
+
 
     //Setters
     System.out.println("Thief hp from 50 to 10");
@@ -176,6 +191,11 @@ public class Main {
     blackmage1.setCurrentMp(10);
     System.out.println(blackmage1.getCurrentMp());
 
+    System.out.println("enemy1 hp from 50 to 10");
+    System.out.println(engineer1.getCurrentHp());
+    engineer1.setCurrentHp(10);
+    System.out.println(engineer1.getCurrentHp());
+
     // Equals
     System.out.println("thief1 should be equal to thief3, but not to thief2 nor knight1");
     System.out.println(thief1.equals(thief3));
@@ -205,6 +225,11 @@ public class Main {
     System.out.println(blackmage1.equals(blackmage2));
     System.out.println(blackmage1.equals(whitemage1));
     System.out.println(blackmage1.equals(thief1));
+
+    System.out.println("enemy should be equal to enemy3, but not to enemy2 nor thief1");
+    System.out.println(enemy1.equals(enemy3));
+    System.out.println(enemy1.equals(enemy2));
+    System.out.println(enemy1.equals(thief1));
 
     System.out.println("sword1 should be equal to sword3, but not to sword2, bow1 or staff1");
     System.out.println(sword1.equals(sword3));
@@ -246,6 +271,9 @@ public class Main {
     System.out.println("blackmage1 toString");
     System.out.println(blackmage1.toString());
 
+    System.out.println("enemy1 toString");
+    System.out.println(enemy1.toString());
+
     System.out.println("sword1 toString");
     System.out.println(sword1.toString());
 
@@ -268,11 +296,14 @@ public class Main {
     System.out.println("engineer1 hashcode");
     System.out.println(engineer1.hashCode());
 
-    System.out.println("whitemage hashcode");
+    System.out.println("whitemage1 hashcode");
     System.out.println(whitemage1.hashCode());
 
-    System.out.println("blackmage hashcode");
+    System.out.println("blackmage1 hashcode");
     System.out.println(blackmage1.hashCode());
+
+    System.out.println("enemy1 hashcode");
+    System.out.println(enemy1.hashCode());
 
     System.out.println("sword1 hashcode");
     System.out.println(sword1.hashCode());
@@ -302,6 +333,8 @@ public class Main {
     engineer1.waitTurn();
     System.out.println("getEquippedWeapon from engineer1");
     System.out.println(engineer1.getEquippedWeapon().toString());
+
+    enemy1.waitTurn();
 
     // Waits for 6 seconds to ensure that all characters have finished waiting
     Thread.sleep(6000);
