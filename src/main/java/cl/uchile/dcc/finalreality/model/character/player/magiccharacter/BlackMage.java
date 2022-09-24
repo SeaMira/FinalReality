@@ -38,7 +38,7 @@ public class BlackMage extends MagicCharacter {
    * @param maxMp
    *     the maximum amount of mana the character can have
    */
-  protected BlackMage(final @NotNull String name, final int maxHp, final int defense,
+  public BlackMage(final @NotNull String name, final int maxHp, final int defense,
       int maxMp, final @NotNull BlockingQueue<GameCharacter> turnsQueue)
       throws InvalidStatValueException {
     super(name, maxHp, defense, maxMp, turnsQueue);

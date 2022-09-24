@@ -12,7 +12,7 @@ public abstract class MagicWeapon extends Weapon {
   /**
   * Creates a magic weapon with a name, a base damage, speed/weight, it's type and magic damage.
   */
-  public MagicWeapon(final String name, final int damage, final int weight,
+  protected MagicWeapon(final String name, final int damage, final int weight,
                      final WeaponType type, final int magicdamage) {
     super(name, damage, weight, type);
     this.magicdamage = magicdamage;
