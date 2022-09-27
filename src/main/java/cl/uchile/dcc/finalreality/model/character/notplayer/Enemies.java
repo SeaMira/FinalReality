@@ -7,6 +7,9 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+/*
+This class was made so in a hypothetic future it is possible to make different kinds of enemies, for example, magic enemies or Giant enemies, or boss enemies
+ */
 
 /**
  * A class that holds all the general information of a single enemy of the game.
