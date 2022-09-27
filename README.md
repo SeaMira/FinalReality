@@ -16,4 +16,22 @@ enemies controlled by the computer.
 
 ---
 
-**The rest of the documentation is left for the users of this template to complete**
+Classes structure
+-----------------
+
+### Characters
+
+To make a character, it was defined a hierarchical order where GameCharacter presents the
+most generic type of character in this game, since enemies, (possible npc's) and playable 
+characters share this type. GameCharacters have a Name, a maximum amount of health points 
+(maxHp), a defense value and will have a queue that is going to store the turns.
+
+Then multiples classes are derived until we specialize characters: 
+
+* _Enemies_ have their own damage and weight.
+* _PlayerCharacters_ can equip a weapon.
+
+
+
+
+

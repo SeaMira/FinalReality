@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.model.character.notplayer.Enemies;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
@@ -56,7 +57,7 @@ public abstract class AbstractCharacter implements GameCharacter {
           /* delay = */ player.getEquippedWeapon().getWeight() / 10,
           /* unit = */ TimeUnit.SECONDS);
     } else {
-      var enemy = (Enemy) this;
+      var enemy = (Enemies) this;
       scheduledExecutor.schedule(
           /* command = */ this::addToQueue,
           /* delay = */ enemy.getWeight() / 10,

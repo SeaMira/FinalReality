@@ -1,9 +1,9 @@
 package cl.uchile.dcc.finalreality;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.model.character.Enemy;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+import cl.uchile.dcc.finalreality.model.character.notplayer.Enemies;
+import cl.uchile.dcc.finalreality.model.character.notplayer.SimpleEnemy;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Thief;
@@ -14,7 +14,7 @@ import cl.uchile.dcc.finalreality.model.weapon.weapons.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Bow;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Sword;
-import java.util.Random;
+
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -57,9 +57,9 @@ public class Main {
     BlackMage  blackmage3 = new BlackMage("blackmage 1", 50, 60, 70, queue);
 
     // Enemy
-    Enemy enemy1 = new Enemy("enemy1", 30, 50, 67, queue);
-    Enemy enemy2 = new Enemy("enemy2", 35, 55, 68, queue);
-    Enemy enemy3 = new Enemy("enemy1", 30, 50, 67, queue);
+    SimpleEnemy enemy1 = new SimpleEnemy("enemy1", 30, 40, 50, 67, queue);
+    SimpleEnemy enemy2 = new SimpleEnemy("enemy2", 30, 35, 55, 68, queue);
+    SimpleEnemy enemy3 = new SimpleEnemy("enemy1", 30, 40, 50, 67, queue);
     // Weapons
     //Non magic weapons
     Sword sword1 = new Sword("sword 1", 50, 40);
@@ -119,12 +119,13 @@ public class Main {
     System.out.println(blackmage1.getCurrentMp());
     System.out.println(blackmage1.getMaxMp());
 
-    System.out.println("Enemy name, defense, currentHp, maxHp, weight");
+    System.out.println("Enemy name, defense, currentHp, maxHp, weight, damage");
     System.out.println(enemy1.getName());
     System.out.println(enemy1.getDefense());
     System.out.println(enemy1.getCurrentHp());
     System.out.println(enemy1.getMaxHp());
     System.out.println(enemy1.getWeight());
+    System.out.println(enemy1.getDamage());
 
     System.out.println("Sword name, weight, damage, type");
     System.out.println(sword1.getName());
@@ -221,7 +222,7 @@ public class Main {
     System.out.println(blackmage1.equals(whitemage1));
     System.out.println(blackmage1.equals(thief1));
 
-    System.out.println("enemy should be equal to enemy3, but not to enemy2 nor thief1");
+    System.out.println("enemy1 should be equal to enemy3, but not to enemy2 nor thief1");
     System.out.println(enemy1.equals(enemy3));
     System.out.println(enemy1.equals(enemy2));
     System.out.println(enemy1.equals(thief1));
