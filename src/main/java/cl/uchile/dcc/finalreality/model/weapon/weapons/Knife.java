@@ -1,8 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import cl.uchile.dcc.finalreality.model.weapon.WeaponType;
-import cl.uchile.dcc.finalreality.model.weapon.magicweapon.Staff;
 import java.util.Objects;
 
 
@@ -11,13 +10,13 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Knife extends Weapon {
+public class Knife extends Weapon implements MeleeWeapons {
 
   /**
-   * Creates a Knife with a name, a base damage, speed/weight and being a Knife type.
+   * Creates a Knife with a name, a base damage and speed/weight.
    */
   public Knife(final String name, final int damage, final int weight) {
-    super(name, damage, weight, WeaponType.KNIFE);
+    super(name, damage, weight);
   }
 
   /**
@@ -40,8 +39,7 @@ public class Knife extends Weapon {
     return hashCode() == knife.hashCode()
            && this.getDamage() == knife.getDamage()
            && this.getWeight() == knife.getWeight()
-           && this.getName().equals(knife.getName())
-           && this.getType().equals(knife.getType());
+           && this.getName().equals(knife.getName());
   }
 
   /**
@@ -52,7 +50,7 @@ public class Knife extends Weapon {
   @Override
   public int hashCode() {
 
-    return Objects.hash(Knife.class, name, damage, weight, type);
+    return Objects.hash(Knife.class, name, damage, weight);
   }
 
   /**
@@ -62,8 +60,8 @@ public class Knife extends Weapon {
   */
   @Override
   public String toString() {
-    return "Knife{name='%s', damage=%d, weight=%d, type=%s}"
-          .formatted(name, damage, weight, type);
+    return "Knife{name='%s', damage=%d, weight=%d}"
+          .formatted(name, damage, weight);
   }
 
 

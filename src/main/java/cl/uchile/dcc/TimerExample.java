@@ -4,7 +4,6 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Thief;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import cl.uchile.dcc.finalreality.model.weapon.WeaponType;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Knife;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
@@ -19,6 +18,7 @@ public class TimerExample {
   /**
   * Example that makes 10 Thief characters to show how to get their turns on the queue.
   *@param args
+  *     no arguments are recieved
   *
   *@throws InterruptedException
   *

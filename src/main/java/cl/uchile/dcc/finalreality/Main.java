@@ -64,7 +64,7 @@ public class Main {
     //Non magic weapons
     Sword sword1 = new Sword("sword 1", 50, 40);
     Sword sword2 = new Sword("sword 2", 55, 65);
-    Sword sword3 = new Sword("sword 1", 50, 60);
+    Sword sword3 = new Sword("sword 1", 50, 40);
 
     Knife knife1 = new Knife("knife 1", 50, 60);
     Knife knife2 = new Knife("knife 2", 55, 65);
@@ -76,7 +76,7 @@ public class Main {
 
     Bow bow1 = new Bow("bow 1", 50, 50);
     Bow bow2 = new Bow("bow 2", 55, 65);
-    Bow bow3 = new Bow("bow 1", 50, 60);
+    Bow bow3 = new Bow("bow 1", 50, 50);
 
     //Magic weapons
     Staff staff1 = new Staff("staff 1", 50, 60, 70);
@@ -130,32 +130,27 @@ public class Main {
     System.out.println(sword1.getName());
     System.out.println(sword1.getWeight());
     System.out.println(sword1.getDamage());
-    System.out.println(sword1.getType());
 
     System.out.println("Knife name, weight, damage, type");
     System.out.println(knife1.getName());
     System.out.println(knife1.getWeight());
     System.out.println(knife1.getDamage());
-    System.out.println(knife1.getType());
 
     System.out.println("Axe name, weight, damage, type");
     System.out.println(axe1.getName());
     System.out.println(axe1.getWeight());
     System.out.println(axe1.getDamage());
-    System.out.println(axe1.getType());
 
     System.out.println("Bow name, weight, damage, type");
     System.out.println(bow1.getName());
     System.out.println(bow1.getWeight());
     System.out.println(bow1.getDamage());
-    System.out.println(bow1.getType());
 
     System.out.println("Staff name, weight, damage, magicdamage, type");
     System.out.println(staff1.getName());
     System.out.println(staff1.getWeight());
     System.out.println(staff1.getDamage());
     System.out.println(staff1.getMagicdamage());
-    System.out.println(staff1.getType());
 
 
 
@@ -192,9 +187,9 @@ public class Main {
     System.out.println(blackmage1.getCurrentMp());
 
     System.out.println("enemy1 hp from 50 to 10");
-    System.out.println(engineer1.getCurrentHp());
-    engineer1.setCurrentHp(10);
-    System.out.println(engineer1.getCurrentHp());
+    System.out.println(enemy1.getCurrentHp());
+    enemy1.setCurrentHp(10);
+    System.out.println(enemy1.getCurrentHp());
 
     // Equals
     System.out.println("thief1 should be equal to thief3, but not to thief2 nor knight1");
@@ -249,11 +244,17 @@ public class Main {
     System.out.println(axe1.equals(bow1));
     System.out.println(axe1.equals(staff1));
 
-    System.out.println("bow1 should be equal to bow3, but not to bow2, sowrd1 or staff1");
+    System.out.println("bow1 should be equal to bow3, but not to bow2, sword1 or staff1");
     System.out.println(bow1.equals(bow3));
     System.out.println(bow1.equals(bow2));
     System.out.println(bow1.equals(sword1));
     System.out.println(bow1.equals(staff1));
+
+    System.out.println("staff1 should be equal to staff3, but not to bow2, sword1 or staff2");
+    System.out.println(staff1.equals(staff3));
+    System.out.println(staff1.equals(bow2));
+    System.out.println(staff1.equals(sword1));
+    System.out.println(staff1.equals(staff2));
 
     // toString
     System.out.println("thief1 toString");

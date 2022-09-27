@@ -1,7 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import cl.uchile.dcc.finalreality.model.weapon.WeaponType;
 import java.util.Objects;
 
 
@@ -10,13 +10,13 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Sword extends Weapon {
+public class Sword extends Weapon implements MeleeWeapons {
 
   /**
-  * Creates a Sword with a name, a base damage, speed/weight and being an Sword type.
+  * Creates a Sword with a name, a base damage and speed/weight.
   */
   public Sword(final String name, final int damage, final int weight) {
-    super(name, damage, weight, WeaponType.SWORD);
+    super(name, damage, weight);
   }
 
   /**
@@ -39,8 +39,7 @@ public class Sword extends Weapon {
     return hashCode() == sword.hashCode()
            && this.getDamage() == sword.getDamage()
            && this.getWeight() == sword.getWeight()
-           && this.getName().equals(sword.getName())
-           && this.getType().equals(sword.getType());
+           && this.getName().equals(sword.getName());
   }
 
   /**
@@ -50,7 +49,7 @@ public class Sword extends Weapon {
   */
   @Override
   public int hashCode() {
-    return Objects.hash(Sword.class, name, damage, weight, type);
+    return Objects.hash(Sword.class, name, damage, weight);
   }
 
   /**
@@ -60,8 +59,8 @@ public class Sword extends Weapon {
   */
   @Override
   public String toString() {
-    return "Sword{name='%s', damage=%d, weight=%d, type=%s}"
-           .formatted(name, damage, weight, type);
+    return "Sword{name='%s', damage=%d, weight=%d}"
+           .formatted(name, damage, weight);
   }
 
 

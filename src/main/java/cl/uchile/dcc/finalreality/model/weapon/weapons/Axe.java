@@ -1,7 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import cl.uchile.dcc.finalreality.model.weapon.WeaponType;
 import java.util.Objects;
 
 /**
@@ -9,12 +9,12 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Axe extends Weapon {
+public class Axe extends Weapon implements MeleeWeapons {
   /**
-  * Creates an Axe with a name, a base damage, speed/weight and being an Axe type.
+  * Creates an Axe with a name, a base damage and speed/weight.
   */
   public Axe(final String name, final int damage, final int weight) {
-    super(name, damage, weight, WeaponType.AXE);
+    super(name, damage, weight);
   }
 
   /**
@@ -37,8 +37,7 @@ public class Axe extends Weapon {
     return hashCode() == axe.hashCode()
                 && this.damage == axe.getDamage()
                 && this.weight == axe.getWeight()
-                && this.name.equals(axe.getName())
-                && this.type.equals(axe.getType());
+                && this.name.equals(axe.getName());
   }
 
   /**
@@ -48,7 +47,7 @@ public class Axe extends Weapon {
   */
   @Override
   public int hashCode() {
-    return Objects.hash(Axe.class, name, damage, weight, type);
+    return Objects.hash(Axe.class, name, damage, weight);
   }
 
   /**
@@ -58,8 +57,8 @@ public class Axe extends Weapon {
   */
   @Override
   public String toString() {
-    return "Axe{name='%s', damage=%d, weight=%d, type=%s}"
-                .formatted(name, damage, weight, type);
+    return "Axe{name='%s', damage=%d, weight=%d}"
+                .formatted(name, damage, weight);
   }
 
 

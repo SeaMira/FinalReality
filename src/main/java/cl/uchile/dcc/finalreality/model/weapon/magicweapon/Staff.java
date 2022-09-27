@@ -1,8 +1,8 @@
 package cl.uchile.dcc.finalreality.model.weapon.magicweapon;
 
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
+import cl.uchile.dcc.finalreality.model.weapon.RangeWeapons;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import cl.uchile.dcc.finalreality.model.weapon.WeaponType;
 import java.util.Objects;
 
 
@@ -11,12 +11,12 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Staff extends MagicWeapon {
+public class Staff extends MagicWeapon implements RangeWeapons {
   /**
   * Creates a Staff with a name, a base damage, speed/weight, magic damage and being a staff type.
   */
   public Staff(final String name, final int damage, final int weight, final int magicdamage) {
-    super(name, damage, weight, WeaponType.STAFF, magicdamage);
+    super(name, damage, weight, magicdamage);
   }
 
   /**
@@ -40,8 +40,7 @@ public class Staff extends MagicWeapon {
           && this.getDamage() == staff.getDamage()
           && this.getWeight() == staff.getWeight()
           && this.getMagicdamage() == staff.getMagicdamage()
-          && this.getName().equals(staff.getName())
-          && this.getType().equals(staff.getType());
+          && this.getName().equals(staff.getName());
   }
 
   /**
@@ -51,7 +50,7 @@ public class Staff extends MagicWeapon {
   */
   @Override
   public int hashCode() {
-    return Objects.hash(Staff.class, name, damage, weight, type, magicdamage);
+    return Objects.hash(Staff.class, name, damage, weight, magicdamage);
   }
 
   /**
@@ -61,7 +60,7 @@ public class Staff extends MagicWeapon {
   */
   @Override
   public String toString() {
-    return "Staff{name='%s', damage=%d, weight=%d, type=%s, magicdamage=%d}"
-           .formatted(name, damage, weight, type, magicdamage);
+    return "Staff{name='%s', damage=%d, weight=%d, magicdamage=%d}"
+           .formatted(name, damage, weight, magicdamage);
   }
 }
