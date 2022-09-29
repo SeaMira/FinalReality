@@ -23,7 +23,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected final String name;
-  private ScheduledExecutorService scheduledExecutor;
+  protected ScheduledExecutorService scheduledExecutor;
 
   /**
    * Creates a new character.
@@ -48,27 +48,13 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.name = name;
   }
 
-  @Override
-  public void waitTurn() {
-    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
-    if (this instanceof PlayerCharacter player) {
-      scheduledExecutor.schedule(
-          /* command = */ this::addToQueue,
-          /* delay = */ player.getEquippedWeapon().getWeight() / 10,
-          /* unit = */ TimeUnit.SECONDS);
-    } else {
-      var enemy = (Enemies) this;
-      scheduledExecutor.schedule(
-          /* command = */ this::addToQueue,
-          /* delay = */ enemy.getWeight() / 10,
-          /* unit = */ TimeUnit.SECONDS);
-    }
-  }
+
+  public abstract void waitTurn();
 
   /**
    * Adds this character to the turns queue.
    */
-  private void addToQueue() {
+  protected void addToQueue() {
     try {
       turnsQueue.put(this);
     } catch (Exception e) {

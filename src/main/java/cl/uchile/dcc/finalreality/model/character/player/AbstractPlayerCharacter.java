@@ -13,6 +13,10 @@ import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -68,5 +72,27 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   @Override
   public Weapon getEquippedWeapon() {
     return equippedWeapon;
+  }
+
+  /**
+   * Inserts a character in a queue x seconds later based on his weapon's weight.
+   */
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    Weapon weapon = this.getEquippedWeapon();
+    if (weapon == null) {
+      scheduledExecutor.schedule(
+          /* command = */ this::addToQueue,
+          /* delay = */ 0,
+          /* unit = */  TimeUnit.SECONDS);
+
+    } else {
+      scheduledExecutor.schedule(
+              /* command = */ this::addToQueue,
+              /* delay = */ weapon.getWeight() / 10,
+              /* unit = */  TimeUnit.SECONDS);
+
+    }
+
   }
 }

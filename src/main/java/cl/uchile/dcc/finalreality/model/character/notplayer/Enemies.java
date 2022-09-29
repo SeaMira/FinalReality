@@ -6,6 +6,9 @@ import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 import org.jetbrains.annotations.NotNull;
 /*
 This class was made so in a hypothetic future it is possible to make different kinds of enemies, for example, magic enemies or Giant enemies, or boss enemies
@@ -33,6 +36,18 @@ public abstract class Enemies extends AbstractCharacter {
     Require.statValueAtLeast(1, weight, "Weight");
     this.weight = weight;
     this.damage = damage;
+  }
+
+  /**
+   * Inserts an enemy in a queue x seconds later based on it's weight.
+   */
+  public void waitTurn() {
+    scheduledExecutor = Executors.newSingleThreadScheduledExecutor();
+    scheduledExecutor.schedule(
+            /* command = */ this::addToQueue,
+            /* delay = */ this.getWeight() / 10,
+            /* unit = */ TimeUnit.SECONDS);
+
   }
 
   /**
