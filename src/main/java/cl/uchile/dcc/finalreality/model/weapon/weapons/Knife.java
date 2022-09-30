@@ -1,7 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 
 
@@ -10,7 +10,7 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Knife extends Weapon implements MeleeWeapons {
+public class Knife extends AbstractWeapon implements MeleeWeapons {
 
   /**
    * Creates a Knife with a name, a base damage and speed/weight.

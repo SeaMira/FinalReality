@@ -8,10 +8,10 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
 import org.jetbrains.annotations.NotNull;
 /*
-This class was made so in a hypothetic future it is possible to make different kinds of enemies, for example, magic enemies or Giant enemies, or boss enemies
+This class was made so in a hypothetic future it is possible to make different kinds of enemies,
+for example, magic enemies or Giant enemies, or boss enemies
  */
 
 /**

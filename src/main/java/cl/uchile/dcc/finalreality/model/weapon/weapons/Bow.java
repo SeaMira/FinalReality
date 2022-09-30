@@ -1,8 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
-import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
+import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.RangeWeapons;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 
 /**
@@ -10,7 +9,7 @@ import java.util.Objects;
  *
  * @author ~Sebastian Mira~
  */
-public class Bow extends Weapon implements RangeWeapons {
+public class Bow extends AbstractWeapon implements RangeWeapons {
 
   /**
   * Creates a Bow with a name, a base damage and speed/weight.

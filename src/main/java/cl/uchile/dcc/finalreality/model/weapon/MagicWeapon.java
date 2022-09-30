@@ -6,7 +6,7 @@ package cl.uchile.dcc.finalreality.model.weapon;
  *
  * @author ~Sebastian Mira~
  */
-public abstract class MagicWeapon extends Weapon {
+public abstract class MagicWeapon extends AbstractWeapon {
   protected final int magicdamage;
 
   /**

@@ -1,6 +1,7 @@
 package cl.uchile.dcc.finalreality;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.notplayer.Enemies;
 import cl.uchile.dcc.finalreality.model.character.notplayer.SimpleEnemy;
@@ -344,6 +345,19 @@ public class Main {
       // Pops and prints the names of the characters of the queue to illustrate the turns
       // order
       System.out.println(queue.poll().toString());
+    }
+    try {
+      int testValue = 1;
+      Require.statValueAtLeast(10, testValue, "valor de prueba");
+    } catch (InvalidStatValueException e) {
+      System.out.println("The exception for statValueAtLeast has been caught.");
+    }
+
+    try {
+      int testValue = 11;
+      Require.statValueAtMost(10, testValue, "valor de prueba");
+    } catch (InvalidStatValueException e) {
+      System.out.println("The exception for statValueAtMost has been caught.");
     }
 
   }

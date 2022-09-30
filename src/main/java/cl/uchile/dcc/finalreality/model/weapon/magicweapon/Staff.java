@@ -2,7 +2,6 @@ package cl.uchile.dcc.finalreality.model.weapon.magicweapon;
 
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.RangeWeapons;
-import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 
 
