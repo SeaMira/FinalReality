@@ -9,14 +9,12 @@
 package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A White Mage is a {@link MagicCharacter} that can use <i>white magic</i>.
@@ -90,7 +88,7 @@ public class WhiteMage extends MagicCharacter {
    */
   @Override
   public String toString() {
-    return "WhiteMage{maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-            .formatted(maxMp, maxHp, defense, name);
+    return "WhiteMage{maxMp=%d, currentMp=%d, maxHp=%d, currentHp=%d, defense=%d, name='%s'}"
+            .formatted(maxMp, getCurrentMp(), maxHp, getCurrentHp(), defense, name);
   }
 }

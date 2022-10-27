@@ -13,7 +13,7 @@ public class Axe extends AbstractWeapon implements MeleeWeapons {
   /**
   * Creates an Axe with a name, a base damage and speed/weight.
   */
-  public Axe(final String name, final int damage, final int weight) {
+  public Axe(final String name, final int damage, final int weight)  {
     super(name, damage, weight);
   }
 

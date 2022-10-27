@@ -9,13 +9,12 @@
 package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A BlackMage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>black magic</i>.
@@ -78,8 +77,8 @@ public class BlackMage extends MagicCharacter {
    */
   @Override
   public String toString() {
-    return "BlackMage{currentMp=%d, maxMp=%d, maxHp=%d, defense=%d, name='%s'}"
-        .formatted(getCurrentMp(), getMaxMp(), getCurrentHp(), getMaxHp(), getDefense(), getName());
+    return "BlackMage{maxMp=%d, currentMp=%d, maxHp=%d, currentHp=%d, defense=%d, name='%s'}"
+        .formatted(getMaxMp(), getCurrentMp(), getMaxHp(), getCurrentHp(), getDefense(), getName());
   }
 
   /**

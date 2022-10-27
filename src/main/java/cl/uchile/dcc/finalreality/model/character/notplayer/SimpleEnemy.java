@@ -1,12 +1,11 @@
 package cl.uchile.dcc.finalreality.model.character.notplayer;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
-import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * A class that holds all the information of a single enemy of the game.
@@ -70,7 +69,7 @@ public class SimpleEnemy extends Enemies {
   */
   @Override
   public String toString() {
-    return "SimpleEnemy{maxHp=%d, damage=%d, defense=%d, weight=%d, name='%s'}"
-           .formatted(maxHp, damage, defense, weight, name);
+    return "SimpleEnemy{maxHp=%d, currentHp=%d, damage=%d, defense=%d, weight=%d, name='%s'}"
+           .formatted(maxHp, getCurrentHp(), damage, defense, weight, name);
   }
 }

@@ -1,6 +1,5 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-
 /**
  * A class that holds all the general information of a magic weapon.
  *

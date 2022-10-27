@@ -12,9 +12,10 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
-import org.jetbrains.annotations.NotNull;
 
 
 
@@ -51,7 +52,7 @@ public class Engineer extends AbstractPlayerCharacter {
    */
   @Override
   public String toString() {
-    return "Engineer{maxHp=%d, defense=%d, name='%s'}".formatted(maxHp, defense, name);
+    return "Engineer{maxHp=%d, currentHp=%d, defense=%d, name='%s'}".formatted(maxHp, getCurrentHp(), defense, name);
   }
 
   /**

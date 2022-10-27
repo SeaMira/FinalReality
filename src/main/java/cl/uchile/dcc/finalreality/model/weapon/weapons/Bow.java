@@ -14,7 +14,7 @@ public class Bow extends AbstractWeapon implements RangeWeapons {
   /**
   * Creates a Bow with a name, a base damage and speed/weight.
   */
-  public Bow(final String name, final int damage, final int weight) {
+  public Bow(final String name, final int damage, final int weight)  {
     super(name, damage, weight);
   }
 
