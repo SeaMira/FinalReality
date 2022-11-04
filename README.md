@@ -77,4 +77,10 @@ if it's an enemy we get it from himself). Then we divide that weight value by 10
 The waiting time will then be _weight / 10_ seconds.
 
 
-
+Also there are restrictions on which weapons each character can use. For example a knight may use a Sword,
+an Axe or a Knife, but at the same time he can't use a Staff nor a Bow, so he won't be able to get a Staff or
+a Bow equipped. this goes for every other character:
+* Engineer may use Axes or Bows, but can't use Swords, Knives or Staffs.
+* Thieves may use Swords, Bows or Knives but can't use Axes or Staffs.
+* Black Mages may use only Staffs or Knives.
+* White Mages can only use Staffs.
