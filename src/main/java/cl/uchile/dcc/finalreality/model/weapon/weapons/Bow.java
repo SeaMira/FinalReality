@@ -1,5 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.RangeWeapons;
 import java.util.Objects;
@@ -60,6 +62,81 @@ public class Bow extends AbstractWeapon implements RangeWeapons {
   public String toString() {
     return "Bow{name='%s', damage=%d, weight=%d}"
             .formatted(name, damage, weight);
+  }
+
+  /**
+   * Checks if an Engineer can equip a Bow. Because it is
+   * possible, this will equip the Bow to the Engineer.
+   *
+   * @param character referring to an Engineer.
+   *
+   * @throws InvalidEquipableWeaponException since an Engineer can use
+   *     a Bow, this won't throw an exception.
+   */
+  @Override
+  public void equipEngineer(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    character.setWeapon(this);
+  }
+
+  /**
+   * Checks if a Knight can equip a Bow. Since it is not
+   * possible, this method won't equip a Bow to the Knight.
+   *
+   * @param character referring to a Knight.
+   *
+   * @throws InvalidEquipableWeaponException since a Knight can't use
+   *     a Bow, this will give us a catchable exception for future use.
+   */
+  @Override
+  public void equipKnight(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
+  }
+
+  /**
+   * Checks if a Thief can equip a Bow. Since it is
+   * possible, this method will equip the Bow to the Thief.
+   *
+   * @param character referring to a Thief.
+   *
+   * @throws InvalidEquipableWeaponException since a Thief can use
+   *     a Bow, this won't throw an exception.
+   */
+  @Override
+  public void equipThief(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    character.setWeapon(this);
+  }
+
+  /**
+   * Checks if a Black Mage can equip a Bow. Since it is not
+   * possible, this method won't equip a Bow to the Black Mage.
+   *
+   * @param character referring to a Black Mage.
+   *
+   * @throws InvalidEquipableWeaponException since a Black Mage can't use
+   *     a Bow, this will give as a catchable exception for future use.
+   */
+  @Override
+  public void equipBlackMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
+  }
+
+  /**
+   * Checks if a White Mage can equip a Bow. Because it is
+   * not possible, this method won't equip a Bow to the White Mage.
+   *
+   * @param character refering to a White Mage.
+   *
+   * @throws InvalidEquipableWeaponException since a White Mage can't use
+   *     a Bow, this will give as a catchable exception for future use.
+   */
+  @Override
+  public void equipWhiteMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
   }
 
 

@@ -8,8 +8,8 @@ package cl.uchile.dcc.finalreality.model.character.player;
  * work. If not, see <http://creativecommons.org/licenses/by/4.0/>.
  */
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 
 /**
@@ -19,7 +19,7 @@ public interface PlayerCharacter extends GameCharacter {
   /**
    * Equips a weapon to the character.
    */
-  void equip(Weapon weapon);
+  void equip(Weapon weapon) throws InvalidEquipableWeaponException;
 
   /**
    * Return this character's equipped weapon.

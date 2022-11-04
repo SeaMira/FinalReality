@@ -1,5 +1,7 @@
 package cl.uchile.dcc.finalreality.model.weapon.weapons;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.MeleeWeapons;
 import java.util.Objects;
@@ -63,5 +65,78 @@ public class Sword extends AbstractWeapon implements MeleeWeapons {
            .formatted(name, damage, weight);
   }
 
+  /**
+   * Checks if an Engineer can equip a Sword. Because it is
+   * not possible, this method throws an exception.
+   *
+   * @param character refering to an engineer.
+   *
+   * @throws InvalidEquipableWeaponException since an engineer can't use
+   *     a sword, this will give as a catchable exception for future use.
+   */
+  @Override
+  public void equipEngineer(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
+  }
 
+  /**
+   * Checks if a Knight can equip a Sword. Since it is
+   * possible, this method will equip the Sword to the Knight.
+   *
+   * @param character refering to a Knight.
+   *
+   * @throws InvalidEquipableWeaponException since a Knight can use
+   *     a sword, this won't throw an exception.
+   */
+  @Override
+  public void equipKnight(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    character.setWeapon(this);
+  }
+
+  /**
+   * Checks if a Thief can equip a Sword. Since it is
+   * possible, this method will equip the Sword to the Thief.
+   *
+   * @param character refering to a Thief.
+   *
+   * @throws InvalidEquipableWeaponException since a Thief can use
+   *     a Sword, this won't throw an exception.
+   */
+  @Override
+  public void equipThief(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    character.setWeapon(this);
+  }
+
+  /**
+   * Checks if a Black Mage can equip a Sword. Because it is not
+   * possible, this method will throw an InvalidEquipableWeaponException.
+   *
+   * @param character refering to a Black Mage.
+   *
+   * @throws InvalidEquipableWeaponException since a Black Mage can't use
+   *     a Sword, this will give as a catchable exception for future use.
+   */
+  @Override
+  public void equipBlackMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
+  }
+
+  /**
+   * Checks if a White Mage can equip a Knife. Because it is
+   * not possible, this method throws an exception.
+   *
+   * @param character refering to a White Mage.
+   *
+   * @throws InvalidEquipableWeaponException since a White Mage can't use
+   *     a knife, this will give as a catchable exception for future use.
+   */
+  @Override
+  public void equipWhiteMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException {
+    throw new InvalidEquipableWeaponException(this.getName(), character.getName());
+  }
 }

@@ -8,6 +8,7 @@
 
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
@@ -17,6 +18,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A class that holds all the information of a player-controlled character in the game.
@@ -52,14 +54,21 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   }
 
   /**
-   * Equips a character with a weapon.
+   * Tries to equip a weapon to the character.
    *
    * @param weapon
    *      a {@link Weapon} that'll be equipped to the character
+   * @throws InvalidEquipableWeaponException in case the character can't use that weapon.
    */
-  @Override
-  public void equip(Weapon weapon) {
-    this.equippedWeapon = weapon;
+  public abstract void equip(Weapon weapon) throws InvalidEquipableWeaponException;
+
+  /**
+   * Sets an allowed weapon to the character.
+   *
+   * @param weapon will be equipped to the character
+   */
+  public void setWeapon(Weapon weapon) {
+    equippedWeapon = weapon;
   }
 
   /**

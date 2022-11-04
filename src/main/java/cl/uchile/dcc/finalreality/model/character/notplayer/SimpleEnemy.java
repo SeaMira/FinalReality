@@ -2,10 +2,10 @@ package cl.uchile.dcc.finalreality.model.character.notplayer;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A class that holds all the information of a single enemy of the game.

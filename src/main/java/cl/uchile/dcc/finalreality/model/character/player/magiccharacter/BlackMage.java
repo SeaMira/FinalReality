@@ -8,13 +8,15 @@
 
 package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
-import org.jetbrains.annotations.NotNull;
-
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A BlackMage is a {@link MagicCharacter} that can equip {@code Staff}s and use <i>black magic</i>.
@@ -91,4 +93,16 @@ public class BlackMage extends MagicCharacter {
     return Objects.hash(BlackMage.class, getName(), getMaxHp(), getDefense(), getMaxMp());
   }
   // endregion
+
+  /**
+   * Way to see if the weapon will be equipped by the Black Mage.
+   *
+   * @param weapon
+   *      a {@link Weapon} that'll be equipped to the character
+   * @throws InvalidEquipableWeaponException just if the Black Mage
+   *      can't equip the given weapon.
+   */
+  public void equip(Weapon weapon) throws InvalidEquipableWeaponException {
+    weapon.equipBlackMage(this);
+  }
 }

@@ -8,13 +8,16 @@
 
 package cl.uchile.dcc.finalreality.model.character.player.commoncharacter;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+
 
 
 /**
@@ -86,5 +89,17 @@ public class Thief extends AbstractPlayerCharacter {
   public String toString() {
     return "Thief{maxHp=%d, currentHp=%d, defense=%d, name='%s'}"
             .formatted(maxHp, getCurrentHp(), defense, name);
+  }
+
+  /**
+   * Way to see if the weapon will be equipped by the Thief.
+   *
+   * @param weapon
+   *      a {@link Weapon} that'll be equipped to the character
+   * @throws InvalidEquipableWeaponException just if the Thief
+   *      can't equip the given weapon.
+   */
+  public void equip(Weapon weapon) throws InvalidEquipableWeaponException {
+    weapon.equipThief(this);
   }
 }

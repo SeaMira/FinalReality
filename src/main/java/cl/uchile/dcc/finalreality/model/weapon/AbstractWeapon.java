@@ -1,5 +1,8 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
+
 /**
  * A class that holds all the general information of a weapon.
  *
@@ -70,5 +73,55 @@ public abstract class AbstractWeapon implements Weapon {
    * @return a string with info about the Weapon
    */
   public abstract String toString();
+
+  /**
+   * Equips a weapon to the character only if it is allowed for an Engineer.
+   *
+   * @param character mainly an engineer
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public abstract void equipEngineer(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
+
+  /**
+   * Equips a weapon to the character only if it is allowed for a Knight.
+   *
+   * @param character mainly a knight
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public abstract void equipKnight(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
+
+  /**
+   * Equips a weapon to the character only if it is allowed for a Thief.
+   *
+   * @param character mainly a Thief
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public abstract void equipThief(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
+
+  /**
+   * Equips a weapon to the character only if it is allowed for a Black Mage.
+   *
+   * @param character mainly an Black mage
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public abstract void equipBlackMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
+
+  /**
+   * Equips a weapon to the character only if it is allowed for a White Mage.
+   *
+   * @param character mainly a White Mage
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public abstract void equipWhiteMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
 
 }

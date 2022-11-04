@@ -1,10 +1,13 @@
 package cl.uchile.dcc.finalreality.model.character.player;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
+
 
 
 /**
@@ -59,6 +62,15 @@ public abstract class MagicCharacter extends AbstractPlayerCharacter {
     Require.statValueAtMost(maxMp, newMp, "Current MP");
     this.currentMp = newMp;
   }
+
+  /**
+   * Tries to equip a weapon to the character.
+   *
+   * @param weapon
+   *      a {@link Weapon} that'll be equipped to the character
+   * @throws InvalidEquipableWeaponException in case the character can't use that weapon.
+   */
+  public abstract void equip(Weapon weapon) throws InvalidEquipableWeaponException;
 
   /**
   * Returns the max MP of the character.

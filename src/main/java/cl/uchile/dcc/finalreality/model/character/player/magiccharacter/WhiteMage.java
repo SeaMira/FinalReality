@@ -8,13 +8,15 @@
 
 package cl.uchile.dcc.finalreality.model.character.player.magiccharacter;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
-import org.jetbrains.annotations.NotNull;
-
+import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
+import org.jetbrains.annotations.NotNull;
+
 
 /**
  * A White Mage is a {@link MagicCharacter} that can use <i>white magic</i>.
@@ -90,5 +92,17 @@ public class WhiteMage extends MagicCharacter {
   public String toString() {
     return "WhiteMage{maxMp=%d, currentMp=%d, maxHp=%d, currentHp=%d, defense=%d, name='%s'}"
             .formatted(maxMp, getCurrentMp(), maxHp, getCurrentHp(), defense, name);
+  }
+
+  /**
+   * Way to see if the weapon will be equipped by the White Mage.
+   *
+   * @param weapon
+   *      a {@link Weapon} that'll be equipped to the character
+   * @throws InvalidEquipableWeaponException just if the White Mage
+   *      can't equip the given weapon.
+   */
+  public void equip(Weapon weapon) throws InvalidEquipableWeaponException {
+    weapon.equipWhiteMage(this);
   }
 }

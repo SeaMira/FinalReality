@@ -1,5 +1,6 @@
 package cl.uchile.dcc.finalreality.model.character;
 
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.notplayer.SimpleEnemy;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Engineer;
@@ -10,6 +11,7 @@ import cl.uchile.dcc.finalreality.model.character.player.magiccharacter.WhiteMag
 import cl.uchile.dcc.finalreality.model.weapon.magicweapon.Staff;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Axe;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Bow;
+import cl.uchile.dcc.finalreality.model.weapon.weapons.Knife;
 import cl.uchile.dcc.finalreality.model.weapon.weapons.Sword;
 import org.junit.Before;
 import org.junit.Test;
@@ -197,15 +199,237 @@ public class GameCharacterTest {
     }
 
     @Test
-    public void testCharacterEquippedWeapon() {
-        Axe axe1 = new Axe("axe1", 10, 10);
+    public void testCharacterEquippedSword() throws InvalidEquipableWeaponException {
+        Sword sword1 = new Sword("sword1", 20, 20);
         assertEquals(null, eng1.getEquippedWeapon());
-        eng1.equip(axe1);
-        assertEquals(axe1, eng1.getEquippedWeapon());
+        assertEquals(null, knight1.getEquippedWeapon());
+        assertEquals(null, thief1.getEquippedWeapon());
+        assertEquals(null, bmage1.getEquippedWeapon());
+        assertEquals(null, wmage1.getEquippedWeapon());
+
+        boolean notEquippedSword1 = false;
+        boolean notEquippedSword4 = false;
+        boolean notEquippedSword5 = false;
+
+        // engineer
+        try {
+            eng1.equip(sword1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedSword1 = true;
+        }
+        assertTrue(notEquippedSword1);
+
+        // knight
+        knight1.equip(sword1);
+        assertEquals(sword1, knight1.getEquippedWeapon());
+
+        // thief
+        thief1.equip(sword1);
+        assertEquals(sword1, thief1.getEquippedWeapon());
+
+        // black mage
+        try {
+            bmage1.equip(sword1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedSword4 = true;
+        }
+        assertTrue(notEquippedSword4);
+
+        // white mage
+        try {
+            wmage1.equip(sword1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedSword5 = true;
+        }
+        assertTrue(notEquippedSword5);
+
     }
 
     @Test
-    public void testCharacterTurns() throws InterruptedException {
+    public void testCharacterEquippedAxe() throws InvalidEquipableWeaponException {
+        Axe axe1 = new Axe("axe1", 20, 20);
+        assertEquals(null, eng1.getEquippedWeapon());
+        assertEquals(null, knight1.getEquippedWeapon());
+        assertEquals(null, thief1.getEquippedWeapon());
+        assertEquals(null, bmage1.getEquippedWeapon());
+        assertEquals(null, wmage1.getEquippedWeapon());
+
+        boolean notEquippedAxe3 = false;
+        boolean notEquippedAxe4 = false;
+        boolean notEquippedAxe5 = false;
+
+        // engineer
+        eng1.equip(axe1);
+        assertEquals(axe1, eng1.getEquippedWeapon());
+
+        // knight
+        knight1.equip(axe1);
+        assertEquals(axe1, knight1.getEquippedWeapon());
+
+        // thief
+        try {
+            thief1.equip(axe1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedAxe3 = true;
+        }
+        assertTrue(notEquippedAxe3);
+
+        // black mage
+        try {
+            bmage1.equip(axe1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedAxe4 = true;
+        }
+        assertTrue(notEquippedAxe4);
+
+        // white mage
+        try {
+            wmage1.equip(axe1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedAxe5 = true;
+        }
+        assertTrue(notEquippedAxe5);
+
+    }
+
+    @Test
+    public void testCharacterEquippedKnife() throws InvalidEquipableWeaponException {
+        Knife knife1 = new Knife("knife", 20, 20);
+        assertEquals(null, eng1.getEquippedWeapon());
+        assertEquals(null, knight1.getEquippedWeapon());
+        assertEquals(null, thief1.getEquippedWeapon());
+        assertEquals(null, bmage1.getEquippedWeapon());
+        assertEquals(null, wmage1.getEquippedWeapon());
+
+        boolean notEquippedKnife1 = false;
+        boolean notEquippedKnife5 = false;
+
+        // engineer
+        try {
+            eng1.equip(knife1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedKnife1 = true;
+        }
+        assertTrue(notEquippedKnife1);
+
+        // knight
+        knight1.equip(knife1);
+        assertEquals(knife1, knight1.getEquippedWeapon());
+
+        // thief
+        thief1.equip(knife1);
+        assertEquals(knife1, thief1.getEquippedWeapon());
+
+        // black mage
+        bmage1.equip(knife1);
+        assertEquals(knife1, bmage1.getEquippedWeapon());
+
+        // white mage
+        try {
+            wmage1.equip(knife1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedKnife5 = true;
+        }
+        assertTrue(notEquippedKnife5);
+
+    }
+
+    @Test
+    public void testCharacterEquippedBow() throws InvalidEquipableWeaponException {
+        Bow bow1 = new Bow("bow1", 20, 20);
+        assertEquals(null, eng1.getEquippedWeapon());
+        assertEquals(null, knight1.getEquippedWeapon());
+        assertEquals(null, thief1.getEquippedWeapon());
+        assertEquals(null, bmage1.getEquippedWeapon());
+        assertEquals(null, wmage1.getEquippedWeapon());
+
+        boolean notEquippedBow2 = false;
+        boolean notEquippedBow4 = false;
+        boolean notEquippedBow5 = false;
+
+        // engineer
+        eng1.equip(bow1);
+        assertEquals(bow1, eng1.getEquippedWeapon());
+
+        // knight
+        try {
+            knight1.equip(bow1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedBow2 = true;
+        }
+        assertTrue(notEquippedBow2);
+
+        // thief
+        thief1.equip(bow1);
+        assertEquals(bow1, thief1.getEquippedWeapon());
+
+        // black mage
+        try {
+            bmage1.equip(bow1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedBow4 = true;
+        }
+        assertTrue(notEquippedBow4);
+
+        // white mage
+        try {
+            wmage1.equip(bow1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedBow5 = true;
+        }
+        assertTrue(notEquippedBow5);
+
+    }
+
+    @Test
+    public void testCharacterEquippedStaff() throws InvalidEquipableWeaponException {
+        Staff staff1 = new Staff("staff1", 20, 20, 20);
+        assertEquals(null, eng1.getEquippedWeapon());
+        assertEquals(null, knight1.getEquippedWeapon());
+        assertEquals(null, thief1.getEquippedWeapon());
+        assertEquals(null, bmage1.getEquippedWeapon());
+        assertEquals(null, wmage1.getEquippedWeapon());
+
+        boolean notEquippedStaff1 = false;
+        boolean notEquippedStaff2 = false;
+        boolean notEquippedStaff3 = false;
+
+        // engineer
+        try {
+            eng1.equip(staff1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedStaff1 = true;
+        }
+        assertTrue(notEquippedStaff1);
+
+        // knight
+        try {
+            knight1.equip(staff1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedStaff2 = true;
+        }
+        assertTrue(notEquippedStaff2);
+
+        // thief
+        try {
+            thief1.equip(staff1);
+        } catch(InvalidEquipableWeaponException notWeapon) {
+            notEquippedStaff3 = true;
+        }
+        assertTrue(notEquippedStaff3);
+
+        // black mage
+        bmage1.equip(staff1);
+        assertEquals(staff1, bmage1.getEquippedWeapon());
+
+        // white mage
+        wmage1.equip(staff1);
+        assertEquals(staff1, wmage1.getEquippedWeapon());
+
+    }
+
+    @Test
+    public void testCharacterTurns() throws InterruptedException, InvalidEquipableWeaponException {
         Axe axe1 = new Axe("axe1", 10, 10);
         Sword sword1 = new Sword("sword1", 20, 20);
         Bow bow1 = new Bow("bow1", 30, 30);
