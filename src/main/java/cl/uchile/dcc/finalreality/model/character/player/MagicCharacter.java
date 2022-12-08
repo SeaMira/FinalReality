@@ -2,8 +2,13 @@ package cl.uchile.dcc.finalreality.model.character.player;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
+import cl.uchile.dcc.finalreality.exceptions.MagicWeaponNotEquippedException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
+import cl.uchile.dcc.finalreality.exceptions.SpellNotEquippedException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.spells.NullSpell;
+import cl.uchile.dcc.finalreality.model.spells.Spell;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.concurrent.BlockingQueue;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 public abstract class MagicCharacter extends AbstractPlayerCharacter {
   protected int currentMp;
   protected final int maxMp;
+  private Spell spell;
 
   /**
   * Creates a new Magic Character.
@@ -41,6 +47,7 @@ public abstract class MagicCharacter extends AbstractPlayerCharacter {
     Require.statValueAtLeast(0, maxMp, "Max MP");
     this.maxMp = maxMp;
     this.currentMp = maxMp;
+    this.setSpell(new NullSpell());
   }
 
   // region : ACCESSORS
@@ -80,4 +87,27 @@ public abstract class MagicCharacter extends AbstractPlayerCharacter {
   }
   // endregion
 
+  /**
+   * Sets a new spell for the magic character.
+  */
+  public void setSpell(Spell spell) {
+    spell.setCharacter(this);
+    this.spell = spell;
+  }
+
+  /**
+   * castSpell uses the equipped spell to attack an enemy with magic.
+   *
+   * @param victim is the attacked GameCharacter
+  */
+  public void castSpell(GameCharacter victim) throws IsDeadException,
+          MagicWeaponNotEquippedException, InvalidStatValueException, SpellNotEquippedException  {
+    if (!victim.checkIsAlive()) {
+      throw new IsDeadException();
+    }
+    if (!this.getEquippedWeapon().isMagic()) {
+      throw new MagicWeaponNotEquippedException();
+    }
+    this.spell.cast(victim);
+  }
 }

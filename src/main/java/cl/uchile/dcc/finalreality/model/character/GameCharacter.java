@@ -46,13 +46,13 @@ public interface GameCharacter {
 
   /**
    * Checks if a character is alive or not.
-   */
-   boolean checkIsAlive();
+  */
+  boolean checkIsAlive();
 
   /**
    * Sets a new state for the character.
-   */
-   void setState(State state);
+  */
+  void setState(State state);
 
   /**
    * Sets the HP to 0 points.
@@ -65,7 +65,7 @@ public interface GameCharacter {
   void checkState() throws InvalidStatValueException, IsDeadException, IsParalizedException;
 
   /**
-   * A character attacks another character
+   * A character attacks another character.
    *
    * @param victim recieves the attack
    */

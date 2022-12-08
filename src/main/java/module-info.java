@@ -5,5 +5,8 @@ module finalreality.main {
   requires junit;
   exports cl.uchile.dcc.finalreality.model.weapon;
   exports cl.uchile.dcc.finalreality.model.character;
+  exports cl.uchile.dcc.finalreality.model.spells;
+  exports cl.uchile.dcc.finalreality.model.states;
+  exports cl.uchile.dcc.finalreality.exceptions;
 
 }

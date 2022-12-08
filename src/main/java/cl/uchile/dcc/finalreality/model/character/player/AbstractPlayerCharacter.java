@@ -104,6 +104,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     }
 
   }
+
   /**
    *The player character attacks his victim (GameCharacter).
    *
@@ -112,7 +113,7 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
   public void physicalAttack(GameCharacter victim) {
     int damage = this.getEquippedWeapon().getDamage();
     int def = victim.getDefense();
-    int doneDamage = Math.max(0, damage-def);
+    int doneDamage = Math.max(0, damage - def);
     int currentHp = victim.getCurrentHp();
     int newHp = currentHp - doneDamage;
     try {

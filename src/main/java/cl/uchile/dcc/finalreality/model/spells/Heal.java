@@ -1,36 +1,39 @@
 package cl.uchile.dcc.finalreality.model.spells;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
-import cl.uchile.dcc.finalreality.exceptions.MagicWeaponNotEquippedException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
-import cl.uchile.dcc.finalreality.model.states.BurntState;
-import cl.uchile.dcc.finalreality.model.states.DeadState;
-import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
 
+
+
+/**
+ *A Healing spell.
+ */
 public class Heal extends Spell {
-    public Heal(MagicCharacter character) {
-        super(character, 15);
-    }
 
-    @Override
-    public void cast(GameCharacter victim) throws IsDeadException, MagicWeaponNotEquippedException, InvalidStatValueException {
-        if (!victim.checkIsAlive()){
-            throw new IsDeadException();
-        }
-        if (!mage.getEquippedWeapon().isMagic()) {
-            throw new MagicWeaponNotEquippedException();
-        }
-        MagicWeapon mw = (MagicWeapon) mage.getEquippedWeapon();
+  /**
+   * Sets the Healing spell on the character. It costs 15 mana points from the character.
+   *
+  */
+  public Heal() {
+    super(15);
+  }
 
-        int newMana = mage.getCurrentMp() -cost;
-        mage.setCurrentMp(newMana);
+  /**
+   * Heals a GameCharacter with this spell, rising his health points.
+   *
+   * @param victim the character that recieves the spell.
+   * @throws InvalidStatValueException in case the character doesn't have enough mana.
+   */
+  @Override
+  public void cast(GameCharacter victim) throws InvalidStatValueException {
 
-        int victimHP = victim.getCurrentHp();
-        int victimMaxHP = victim.getMaxHp();
-        int newHp = victimHP + (int)(victimMaxHP*0.3);
-        victim.setCurrentHp(Math.max(victimMaxHP, newHp));
+    int newMana = mage.getCurrentMp() - cost;
+    mage.setCurrentMp(newMana);
 
-    }
+    int victimHp = victim.getCurrentHp();
+    int victimMaxHp = victim.getMaxHp();
+    int newHp = victimHp + (int) (victimMaxHp * 0.3);
+    victim.setCurrentHp(Math.max(victimMaxHp, newHp));
+
+  }
 }

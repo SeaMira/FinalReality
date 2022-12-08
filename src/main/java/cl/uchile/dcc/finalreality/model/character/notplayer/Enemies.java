@@ -4,12 +4,10 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import java.util.Objects;
+import cl.uchile.dcc.finalreality.model.states.DeadState;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import cl.uchile.dcc.finalreality.model.states.DeadState;
 import org.jetbrains.annotations.NotNull;
 /*
 This class was made so in a hypothetic future it is possible to make different kinds of enemies,
@@ -60,7 +58,7 @@ public abstract class Enemies extends AbstractCharacter {
   public void physicalAttack(GameCharacter victim) {
     int damage = this.getDamage();
     int def = victim.getDefense();
-    int doneDamage = Math.max(0, damage-def);
+    int doneDamage = Math.max(0, damage - def);
     int currentHp = victim.getCurrentHp();
     int newHp = currentHp - doneDamage;
     try {
@@ -70,6 +68,7 @@ public abstract class Enemies extends AbstractCharacter {
       victim.setState(new DeadState(victim));
     }
   }
+
   /**
    * Returns the weight of this enemy.
    *

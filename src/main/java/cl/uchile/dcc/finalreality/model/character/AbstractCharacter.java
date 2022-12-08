@@ -4,15 +4,10 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
 import cl.uchile.dcc.finalreality.exceptions.IsParalizedException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
-import cl.uchile.dcc.finalreality.model.character.notplayer.Enemies;
-import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import cl.uchile.dcc.finalreality.model.states.NormalState;
 import cl.uchile.dcc.finalreality.model.states.State;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ScheduledExecutorService;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -97,25 +92,48 @@ public abstract class AbstractCharacter implements GameCharacter {
     currentHp = hp;
   }
 
+  /**
+   * Changes the life of the character to zero.
+   */
   public void setHpToZero() {
     currentHp = 0;
   }
 
+  /**
+   * Checks if the character's health points are greater than zero.
+   */
   public boolean checkIsAlive() {
-    return currentHp > 0 ;
+    return currentHp > 0;
   }
 
+  /**
+   * Sets a new state to the character.
+   *
+   * @param state if the character is normal, dead, burnt, paralyzed or poisoned.
+   */
   public void setState(State state) {
     this.state = state;
   }
 
+  /**
+   * Checks and applies the state effects.
+   *
+   * @throws InvalidStatValueException the character dies.
+   *
+   * @throws IsDeadException the character is dead.
+   *
+   * @throws IsParalizedException the characer is paralyzed.
+   */
   @Override
   public void checkState() throws InvalidStatValueException, IsDeadException, IsParalizedException {
+    if (!this.checkIsAlive()) {
+      throw new IsDeadException();
+    }
     this.state.apply();
   }
 
   /**
-   * A character attacks another character
+   * A character attacks another character.
    *
    * @param victim recieves the attack
    */

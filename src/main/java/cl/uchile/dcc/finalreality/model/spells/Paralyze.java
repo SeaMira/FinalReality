@@ -1,33 +1,35 @@
 package cl.uchile.dcc.finalreality.model.spells;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
-import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
-import cl.uchile.dcc.finalreality.exceptions.MagicWeaponNotEquippedException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
-import cl.uchile.dcc.finalreality.model.states.BurntState;
-import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.states.ParalizedState;
-import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
 
+
+/**
+ *A paralyzing spell.
+ */
 public class Paralyze extends Spell {
-    public Paralyze(MagicCharacter character) {
-        super(character, 25);
-    }
 
-    @Override
-    public void cast(GameCharacter victim) throws IsDeadException, MagicWeaponNotEquippedException, InvalidStatValueException {
-        if (!victim.checkIsAlive()){
-            throw new IsDeadException();
-        }
-        if (!mage.getEquippedWeapon().isMagic()) {
-            throw new MagicWeaponNotEquippedException();
-        }
+  /**
+   * Sets the paralyzing spell on the character. It costs 25 mana points from the character.
+   */
+  public Paralyze() {
+    super(25);
+  }
 
-        int newMana = mage.getCurrentMp() -cost;
-        mage.setCurrentMp(newMana);
+  /**
+   * Paralyzes a GameCharacter with this spell.
+   *
+   * @param victim the character that recieves the attack
+   * @throws InvalidStatValueException in case the character doesn't have enough mana.
+   */
+  @Override
+  public void cast(GameCharacter victim) throws InvalidStatValueException {
 
-        victim.setState(new ParalizedState(victim));
-        
-    }
+    int newMana = mage.getCurrentMp() - cost;
+    mage.setCurrentMp(newMana);
+
+    victim.setState(new ParalizedState(victim));
+
+  }
 }
