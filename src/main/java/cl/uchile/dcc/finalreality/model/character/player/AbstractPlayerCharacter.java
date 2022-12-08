@@ -12,6 +12,7 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.AbstractCharacter;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.weapon.AbstractWeapon;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
 import java.util.concurrent.BlockingQueue;
@@ -103,4 +104,23 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     }
 
   }
+  /**
+   *The player character attacks his victim (GameCharacter).
+   *
+   * @param victim GameCharacter that gets attacked
+   */
+  public void physicalAttack(GameCharacter victim) {
+    int damage = this.getEquippedWeapon().getDamage();
+    int def = victim.getDefense();
+    int doneDamage = Math.max(0, damage-def);
+    int currentHp = victim.getCurrentHp();
+    int newHp = currentHp - doneDamage;
+    try {
+      victim.setCurrentHp(newHp);
+    } catch (InvalidStatValueException e) {
+      victim.setHpToZero();
+      victim.setState(new DeadState(victim));
+    }
+  }
+
 }

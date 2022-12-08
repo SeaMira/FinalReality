@@ -71,4 +71,9 @@ public interface Weapon {
    */
   public void equipWhiteMage(AbstractPlayerCharacter character)
           throws InvalidEquipableWeaponException;
+
+  /**
+   * Checks if a weapon is magic or not.
+   */
+  public boolean isMagic();
 }

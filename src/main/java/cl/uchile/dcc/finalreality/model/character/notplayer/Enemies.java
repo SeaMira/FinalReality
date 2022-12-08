@@ -8,6 +8,8 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import cl.uchile.dcc.finalreality.model.states.DeadState;
 import org.jetbrains.annotations.NotNull;
 /*
 This class was made so in a hypothetic future it is possible to make different kinds of enemies,
@@ -50,6 +52,24 @@ public abstract class Enemies extends AbstractCharacter {
 
   }
 
+  /**
+   *The enemy attacks his victim (GameCharacter).
+   *
+   * @param victim GameCharacter that gets attacked
+   */
+  public void physicalAttack(GameCharacter victim) {
+    int damage = this.getDamage();
+    int def = victim.getDefense();
+    int doneDamage = Math.max(0, damage-def);
+    int currentHp = victim.getCurrentHp();
+    int newHp = currentHp - doneDamage;
+    try {
+      victim.setCurrentHp(newHp);
+    } catch (InvalidStatValueException e) {
+      victim.setHpToZero();
+      victim.setState(new DeadState(victim));
+    }
+  }
   /**
    * Returns the weight of this enemy.
    *

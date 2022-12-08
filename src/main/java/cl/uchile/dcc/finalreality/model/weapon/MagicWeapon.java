@@ -26,4 +26,12 @@ public abstract class MagicWeapon extends AbstractWeapon {
   public int getMagicdamage() {
     return magicdamage;
   }
+
+  /**
+   * Checks if the weapon is magic.
+   */
+  @Override
+  public boolean isMagic() {
+    return true;
+  }
 }

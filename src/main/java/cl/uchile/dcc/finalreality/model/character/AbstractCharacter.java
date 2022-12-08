@@ -1,6 +1,8 @@
 package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
+import cl.uchile.dcc.finalreality.exceptions.IsParalizedException;
 import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.model.character.notplayer.Enemies;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
@@ -8,6 +10,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import cl.uchile.dcc.finalreality.model.states.NormalState;
+import cl.uchile.dcc.finalreality.model.states.State;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,6 +28,7 @@ public abstract class AbstractCharacter implements GameCharacter {
   protected int defense;
   protected final BlockingQueue<GameCharacter> turnsQueue;
   protected final String name;
+  public State state;
   protected ScheduledExecutorService scheduledExecutor;
 
   /**
@@ -46,6 +52,7 @@ public abstract class AbstractCharacter implements GameCharacter {
     this.defense = defense;
     this.turnsQueue = turnsQueue;
     this.name = name;
+    this.state = new NormalState(this);
   }
 
 
@@ -89,4 +96,28 @@ public abstract class AbstractCharacter implements GameCharacter {
     Require.statValueAtMost(maxHp, hp, "Current HP");
     currentHp = hp;
   }
+
+  public void setHpToZero() {
+    currentHp = 0;
+  }
+
+  public boolean checkIsAlive() {
+    return currentHp > 0 ;
+  }
+
+  public void setState(State state) {
+    this.state = state;
+  }
+
+  @Override
+  public void checkState() throws InvalidStatValueException, IsDeadException, IsParalizedException {
+    this.state.apply();
+  }
+
+  /**
+   * A character attacks another character
+   *
+   * @param victim recieves the attack
+   */
+  public abstract void physicalAttack(GameCharacter victim);
 }

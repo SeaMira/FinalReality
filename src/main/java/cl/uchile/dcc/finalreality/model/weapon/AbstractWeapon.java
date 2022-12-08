@@ -124,4 +124,11 @@ public abstract class AbstractWeapon implements Weapon {
   public abstract void equipWhiteMage(AbstractPlayerCharacter character)
           throws InvalidEquipableWeaponException;
 
+  /**
+   * Checks if a weapon is magic or not.
+   */
+  public boolean isMagic() {
+    return false;
+  }
+
 }

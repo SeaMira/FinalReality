@@ -1,6 +1,9 @@
 package cl.uchile.dcc.finalreality.model.character;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
+import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
+import cl.uchile.dcc.finalreality.exceptions.IsParalizedException;
+import cl.uchile.dcc.finalreality.model.states.State;
 
 /**
  * This represents a character from the game.
@@ -40,4 +43,31 @@ public interface GameCharacter {
    * Sets this character's current HP to {@code newHp}.
    */
   void setCurrentHp(int hp) throws InvalidStatValueException;
+
+  /**
+   * Checks if a character is alive or not.
+   */
+   boolean checkIsAlive();
+
+  /**
+   * Sets a new state for the character.
+   */
+   void setState(State state);
+
+  /**
+   * Sets the HP to 0 points.
+   */
+  void setHpToZero();
+
+  /**
+   * Checks the character state and applies its effects.
+   */
+  void checkState() throws InvalidStatValueException, IsDeadException, IsParalizedException;
+
+  /**
+   * A character attacks another character
+   *
+   * @param victim recieves the attack
+   */
+  public abstract void physicalAttack(GameCharacter victim);
 }
