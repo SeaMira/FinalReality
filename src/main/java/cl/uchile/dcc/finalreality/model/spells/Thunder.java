@@ -2,9 +2,12 @@ package cl.uchile.dcc.finalreality.model.spells;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Knight;
 import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.states.ParalizedState;
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
+
+import java.util.Objects;
 
 /**
  *A thunder attack spell.
@@ -46,4 +49,21 @@ public class Thunder extends Spell {
     }
   }
 
+  @Override
+  public int hashCode() {
+    return Objects.hash(Thunder.class, mage, cost);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final Thunder that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && mage.equals(that.mage)
+            && cost == that.cost;
+  }
 }

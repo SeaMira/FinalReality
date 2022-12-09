@@ -3,6 +3,7 @@ package cl.uchile.dcc.finalreality.model.states;
 
 import cl.uchile.dcc.finalreality.exceptions.IsParalizedException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import java.util.Objects;
 
 /**
  * State of a paralyzed character.
@@ -27,6 +28,22 @@ public class ParalizedState extends State {
   public void apply() throws IsParalizedException {
     obj.setState(new NormalState(obj));
     throw new IsParalizedException();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof ParalizedState that)) {
+      return false;
+    }
+    return obj.equals(that.obj) && hashCode() == that.hashCode();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(ParalizedState.class, obj);
   }
 
 

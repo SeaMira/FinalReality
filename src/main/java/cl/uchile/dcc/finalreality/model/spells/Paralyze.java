@@ -3,6 +3,7 @@ package cl.uchile.dcc.finalreality.model.spells;
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.states.ParalizedState;
+import java.util.Objects;
 
 
 /**
@@ -31,5 +32,23 @@ public class Paralyze extends Spell {
 
     victim.setState(new ParalizedState(victim));
 
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Paralyze.class, mage, cost);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final Paralyze that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && mage.equals(that.mage)
+            && cost == that.cost;
   }
 }

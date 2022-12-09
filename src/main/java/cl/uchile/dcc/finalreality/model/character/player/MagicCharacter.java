@@ -110,4 +110,13 @@ public abstract class MagicCharacter extends AbstractPlayerCharacter {
     }
     this.spell.cast(victim);
   }
+
+  /**
+   * Gets the equipped spell.
+   *
+   * @return the equipped spell.
+   */
+  public Spell getSpell() {
+    return this.spell;
+  }
 }

@@ -4,6 +4,7 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.states.PoisonedState;
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
+import java.util.Objects;
 
 
 /**
@@ -36,5 +37,23 @@ public class Poison extends Spell {
 
     victim.setState(new PoisonedState(victim, magicdamage / 3));
 
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Poison.class, mage, cost);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final Poison that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && mage.equals(that.mage)
+            && cost == that.cost;
   }
 }

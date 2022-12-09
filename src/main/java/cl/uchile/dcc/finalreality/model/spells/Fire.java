@@ -5,6 +5,7 @@ import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.states.BurntState;
 import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
+import java.util.Objects;
 
 
 /**
@@ -46,5 +47,23 @@ public class Fire extends Spell {
       }
     }
 
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Fire.class, mage, cost);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final Fire that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && mage.equals(that.mage)
+            && cost == that.cost;
   }
 }

@@ -118,6 +118,10 @@ public abstract class AbstractPlayerCharacter extends AbstractCharacter implemen
     int newHp = currentHp - doneDamage;
     try {
       victim.setCurrentHp(newHp);
+      if (newHp == 0) {
+        victim.setHpToZero();
+        victim.setState(new DeadState(victim));
+      }
     } catch (InvalidStatValueException e) {
       victim.setHpToZero();
       victim.setState(new DeadState(victim));

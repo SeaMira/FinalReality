@@ -94,7 +94,7 @@ public class FinalReality {
   }
 
   /**
-   * Makes all living characters wait their turn
+   * Makes all living characters wait their turn.
    */
   public void makeTurns() {
     for (PlayerCharacter p : playerTeam) {

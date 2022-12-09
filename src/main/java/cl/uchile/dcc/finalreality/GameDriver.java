@@ -29,14 +29,14 @@ public class GameDriver {
   /**
    * Starting point of a game.
    */
-  public static void init() {
-    BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
-    // ArrayList<PlayerCharacter> playerCharacters = createPlayerTeam(queue);
-    // ArrayList<Enemies> enemyCharacters = createEnemyTeam(queue);
-    // ArrayList<Weapon> weaponsBag = createWeaponsBag();
-    // FinalReality game = new FinalReality(playerCharacters, enemyCharacters, weaponsBag);
-    // playGame(game);
-  }
+//  public static void init() {
+//    BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+//    // ArrayList<PlayerCharacter> playerCharacters = createPlayerTeam(queue);
+//    // ArrayList<Enemies> enemyCharacters = createEnemyTeam(queue);
+//    // ArrayList<Weapon> weaponsBag = createWeaponsBag();
+//    // FinalReality game = new FinalReality(playerCharacters, enemyCharacters, weaponsBag);
+//    // playGame(game);
+//  }
 
   /**
    * Creates a Knight given its parameters and a created weapon.
@@ -184,7 +184,7 @@ public class GameDriver {
    * @param attacker the character that deals the damage.
    * @param victim the receiver of the damage.
   */
-  public static void playerPhysicalAttack(GameCharacter attacker, GameCharacter victim) {
+  public static void physicalAttack(GameCharacter attacker, GameCharacter victim) {
     // checkear que victima no esté muerta
     attacker.physicalAttack(victim);
   }
@@ -199,13 +199,14 @@ public class GameDriver {
       actualCharacter.checkState();
       // playTurn(actualCharacter);
     } catch (IsDeadException isDead) {
+      System.out.println("Character is already dead!");
       return;
     } catch (IsParalizedException isParalized) {
-      System.out.println("El personaje está paralizado y no puede hacer nada!");
+      System.out.println("Character is paralyzed and can't do anything!");
     } catch (InvalidStatValueException invalidHp) {
       actualCharacter.setHpToZero();
       actualCharacter.setState(new DeadState(actualCharacter));
-      System.out.println("El personaje ha muerto!");
+      System.out.println("The character has died!");
     }
   }
 
@@ -267,7 +268,8 @@ public class GameDriver {
    * @param queue where we can control the character's turns.
    * @throws InterruptedException in case something fails with the sleeping threads.
    */
-  public static void playGame(FinalReality game, BlockingQueue<GameCharacter> queue) throws InterruptedException{
+  public static void playGame(FinalReality game, BlockingQueue<GameCharacter> queue)
+          throws InterruptedException {
     game.makeTurns();
     while (!game.isEnemyWin() && !game.isPlayerWin()) {
       while (queue.isEmpty()) {

@@ -2,7 +2,7 @@ package cl.uchile.dcc.finalreality.model.spells;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
-
+import java.util.Objects;
 
 
 /**
@@ -33,7 +33,25 @@ public class Heal extends Spell {
     int victimHp = victim.getCurrentHp();
     int victimMaxHp = victim.getMaxHp();
     int newHp = victimHp + (int) (victimMaxHp * 0.3);
-    victim.setCurrentHp(Math.max(victimMaxHp, newHp));
+    victim.setCurrentHp(Math.min(victimMaxHp, newHp));
 
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Heal.class, mage, cost);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof final Heal that)) {
+      return false;
+    }
+    return hashCode() == that.hashCode()
+            && mage.equals(that.mage)
+            && cost == that.cost;
   }
 }

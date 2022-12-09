@@ -116,6 +116,13 @@ public abstract class AbstractCharacter implements GameCharacter {
   }
 
   /**
+   * Getter for the state of the character.
+   */
+  public State getState() {
+    return state;
+  }
+
+  /**
    * Checks and applies the state effects.
    *
    * @throws InvalidStatValueException the character dies.

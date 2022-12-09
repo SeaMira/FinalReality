@@ -2,6 +2,7 @@ package cl.uchile.dcc.finalreality.model.states;
 
 import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
+import java.util.Objects;
 
 /**
  * State of a burnt character.
@@ -32,5 +33,21 @@ public class BurntState extends State {
     int newHp = hp - burnDamage;
     obj.setCurrentHp(newHp);
 
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof BurntState that)) {
+      return false;
+    }
+    return burnDamage == that.burnDamage && obj.equals(that.obj) && hashCode() == that.hashCode();
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(BurntState.class, obj, burnDamage);
   }
 }
