@@ -46,6 +46,20 @@ public class FinalReality {
   }
 
   /**
+   * Says if the player wins.
+   */
+  public boolean isPlayerWin() {
+    return playerWins;
+  }
+
+  /**
+   * Says if the enemy wins.
+   */
+  public boolean isEnemyWin() {
+    return enemyWins;
+  }
+
+  /**
    * Checks if the player team lost, same as saying
    * that checks if the entire player team is dead.
   */
@@ -69,13 +83,29 @@ public class FinalReality {
   public void checkIfEnemyLose() {
     int enemiesCount = enemyTeam.size();
     int deadEnemiesCount = 0;
-    for (PlayerCharacter p : playerTeam) {
+    for (Enemies p : enemyTeam) {
       if (p.getCurrentHp() <= 0) {
         deadEnemiesCount += 1;
       }
     }
     if (enemiesCount == deadEnemiesCount) {
       setPlayerWins();
+    }
+  }
+
+  /**
+   * Makes all living characters wait their turn
+   */
+  public void makeTurns() {
+    for (PlayerCharacter p : playerTeam) {
+      if (p.checkIsAlive()) {
+        p.waitTurn();
+      }
+    }
+    for (Enemies e : enemyTeam) {
+      if (e.checkIsAlive()) {
+        e.waitTurn();
+      }
     }
   }
 

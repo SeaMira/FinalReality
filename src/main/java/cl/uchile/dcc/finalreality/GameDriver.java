@@ -5,20 +5,19 @@ import cl.uchile.dcc.finalreality.exceptions.InvalidStatValueException;
 import cl.uchile.dcc.finalreality.exceptions.IsDeadException;
 import cl.uchile.dcc.finalreality.exceptions.IsParalizedException;
 import cl.uchile.dcc.finalreality.exceptions.MagicWeaponNotEquippedException;
-import cl.uchile.dcc.finalreality.exceptions.NoManaLeftException;
-import cl.uchile.dcc.finalreality.exceptions.Require;
 import cl.uchile.dcc.finalreality.exceptions.SpellNotEquippedException;
 import cl.uchile.dcc.finalreality.model.character.GameCharacter;
 import cl.uchile.dcc.finalreality.model.character.notplayer.SimpleEnemy;
+import cl.uchile.dcc.finalreality.model.character.player.MagicCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.PlayerCharacter;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Engineer;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Knight;
 import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Thief;
 import cl.uchile.dcc.finalreality.model.character.player.magiccharacter.BlackMage;
 import cl.uchile.dcc.finalreality.model.character.player.magiccharacter.WhiteMage;
+import cl.uchile.dcc.finalreality.model.spells.Spell;
 import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.weapon.Weapon;
-import java.io.PrintStream;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -29,17 +28,14 @@ public class GameDriver {
 
   /**
    * Starting point of a game.
-   *
-   * @param args from the console.
-   * @throws InvalidStatValueException if a character dies.
    */
-  public static void main(String args[]) throws InvalidStatValueException {
+  public static void init() {
     BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
     // ArrayList<PlayerCharacter> playerCharacters = createPlayerTeam(queue);
     // ArrayList<Enemies> enemyCharacters = createEnemyTeam(queue);
     // ArrayList<Weapon> weaponsBag = createWeaponsBag();
     // FinalReality game = new FinalReality(playerCharacters, enemyCharacters, weaponsBag);
-    // playGame(game, System.out);
+    // playGame(game);
   }
 
   /**
@@ -164,8 +160,7 @@ public class GameDriver {
   public static SimpleEnemy createSimpleEnemy(String name, int weight, int hp, int defense,
                                               int damage, BlockingQueue<GameCharacter> q)
           throws InvalidStatValueException {
-    SimpleEnemy enemy = new SimpleEnemy(name, weight, hp, defense, damage, q);
-    return enemy;
+    return new SimpleEnemy(name, weight, hp, defense, damage, q);
   }
 
   /**
@@ -178,7 +173,8 @@ public class GameDriver {
     try {
       character.equip(weapon);
     } catch (InvalidEquipableWeaponException notWeapon) {
-        // Restarts the characters turn, since he chose an unavailable weapon
+      // Restarts the characters turn, since he chose an unavailable weapon
+      // playTurn(character);
     }
   }
 
@@ -187,7 +183,6 @@ public class GameDriver {
    *
    * @param attacker the character that deals the damage.
    * @param victim the receiver of the damage.
-   * @throws InvalidStatValueException in case the character dies.
   */
   public static void playerPhysicalAttack(GameCharacter attacker, GameCharacter victim) {
     // checkear que victima no esté muerta
@@ -198,12 +193,8 @@ public class GameDriver {
    * Checks the state of a character at the begining of a turn.
    *
    * @param actualCharacter that will get it's state checked and effects applied
-   * @throws InvalidStatValueException in case he dies.
-   * @throws IsDeadException in case he is dead.
-   * @throws IsParalizedException in case he is paralized.
   */
-  public static void checkingState(GameCharacter actualCharacter)
-          throws InvalidStatValueException, IsDeadException, IsParalizedException {
+  public static void checkingState(GameCharacter actualCharacter) {
     try {
       actualCharacter.checkState();
       // playTurn(actualCharacter);
@@ -218,9 +209,80 @@ public class GameDriver {
     }
   }
 
+  /**
+   * Equips another spell in the character.
+   *
+   * @param character will equip the spell.
+   * @param spell to be equipped.
+   */
+  public static void switchSpell(GameCharacter character, Spell spell) {
+    MagicCharacter mage = (MagicCharacter) character;
+    mage.setSpell(spell);
+  }
+
+  /**
+   * Tries a magic attack on a victim.
+   *
+   * @param character magic character that deals a magic attack on a victim if
+   *     he has enough magic points and a magic weapon.
+   * @param victim the reciever of the attack.
+   */
+  public static void magicAttack(GameCharacter character, GameCharacter victim)  {
+    MagicCharacter mage = (MagicCharacter) character;
+    try {
+      mage.castSpell(victim);
+    } catch (IsDeadException isDead) {
+      System.out.println("Victim is already dead!");
+      // playTurn(mage);
+    } catch (MagicWeaponNotEquippedException noStaff) {
+      System.out.println("No magic weapon equipped!");
+      //playTurn(mage);
+    } catch (InvalidStatValueException noMana) {
+      System.out.println("No magic points left for this spell!");
+      //playTurn(mage);
+    } catch (SpellNotEquippedException noSpell) {
+      System.out.println("No spell equipped!");
+      //playTurn(mage);
+    }
+
+  }
+
+  /**
+   * Lets the character play it's turn.
+   *
+   * @param character currently playing.
+   */
+  public static void playTurn(GameCharacter character) {
+    //Chooses to switch weapon
+    //Chooses to switch spell
+    //Chooses to do a physical attack or magic attack.
+    character.waitTurn();
+  }
 
 
-  public static void playGame(FinalReality game, PrintStream out) {
+  /**
+   * Plays a game where the characters, weapons and enemies are all set.
+   *
+   * @param game contains the state and objects of the game.
+   * @param queue where we can control the character's turns.
+   * @throws InterruptedException in case something fails with the sleeping threads.
+   */
+  public static void playGame(FinalReality game, BlockingQueue<GameCharacter> queue) throws InterruptedException{
+    game.makeTurns();
+    while (!game.isEnemyWin() && !game.isPlayerWin()) {
+      while (queue.isEmpty()) {
+        Thread.sleep(1000);
+      }
+      GameCharacter actualCharacter = queue.poll();
+      checkingState(actualCharacter);
+      game.checkIfEnemyLose();
+      game.checkIfPlayerLose();
+    }
+    if (game.isEnemyWin()) {
+      System.out.println("Game over");
+    } else {
+      System.out.println("Winner!");
+    }
   }
 
 
