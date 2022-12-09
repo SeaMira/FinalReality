@@ -44,6 +44,16 @@ weapons, like the magicweapons where we defined Staff (a weapon just for mages),
 also tagged weapons based on his range of attack, for example (this is done with interfaces) Bow,
 a long-range weapon, or a Sword a melee weapon.
 
+### Spells 
+For magic characters there is magic attacks called spells. The spells are made in a way that they need enough
+magic points from the character that will cast it and that this same character has a magic weapon
+(staff, for example). This spell could cause inmediate damage (Fire or Thunder spell) or a pre-turns
+effect (as poisoning, burning or paralyzing). Inmediate-damage-spells could also provoke this side-effects.
+
+### State
+This is an atribute of the characters. Indicates if a character is dead or alive, if he is poisoned, burned or fine.
+With this is easier to cause an effect damage before they start their turn.
+
 Funcionality
 ------------
 
@@ -84,3 +94,16 @@ a Bow equipped. this goes for every other character:
 * Thieves may use Swords, Bows or Knives but can't use Axes or Staffs.
 * Black Mages may use only Staffs or Knives.
 * White Mages can only use Staffs.
+
+Controller Characteristics
+---------------------------
+
+Since we need a way to connect the graphic interface with the program, a driver was made.
+In this driver we can access to every function of the game: from starting a game and creating characters o enemies,
+to attacking, selecting weapons or spells and finishing a game.
+
+To begin a game we just need to decide on what character we want for our 5-character team.
+Then we will have a randomized quantity of enemies. Finally the shifts will be decided and the game will start.
+
+To end a game, one of the two teams must have all of his members with zero HP,
+same as saying that every character of a team must be dead.

@@ -6,7 +6,6 @@ import cl.uchile.dcc.finalreality.model.character.player.commoncharacter.Knight;
 import cl.uchile.dcc.finalreality.model.states.DeadState;
 import cl.uchile.dcc.finalreality.model.states.ParalizedState;
 import cl.uchile.dcc.finalreality.model.weapon.MagicWeapon;
-
 import java.util.Objects;
 
 /**

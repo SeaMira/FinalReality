@@ -26,11 +26,11 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class GameDriver {
 
-  /**
-   * Starting point of a game.
-   */
-//  public static void init() {
-//    BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
+/**
+  * Starting point of a game.
+  */
+// public static void init() {
+//   BlockingQueue<GameCharacter> queue = new LinkedBlockingQueue<>();
 //    // ArrayList<PlayerCharacter> playerCharacters = createPlayerTeam(queue);
 //    // ArrayList<Enemies> enemyCharacters = createEnemyTeam(queue);
 //    // ArrayList<Weapon> weaponsBag = createWeaponsBag();
