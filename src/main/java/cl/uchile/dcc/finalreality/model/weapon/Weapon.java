@@ -1,73 +1,79 @@
 package cl.uchile.dcc.finalreality.model.weapon;
 
-import java.util.Objects;
+import cl.uchile.dcc.finalreality.exceptions.InvalidEquipableWeaponException;
+import cl.uchile.dcc.finalreality.model.character.player.AbstractPlayerCharacter;
 
 /**
- * A class that holds all the information of a weapon.
- *
- * @author <a href="https://www.github.com/r8vnhill">R8V</a>
- * @author ~Your name~
+ * Makes a "tag" for every weapon.
  */
-public class Weapon {
-
-  private final String name;
-  private final int damage;
-  private final int weight;
-  private final WeaponType type;
+public interface Weapon {
+  /**
+  * Gets the name of the weapon.
+  */
+  String getName();
 
   /**
-   * Creates a weapon with a name, a base damage, speed, and it's type.
-   */
-  public Weapon(final String name, final int damage, final int weight,
-      final WeaponType type) {
-    this.name = name;
-    this.damage = damage;
-    this.weight = weight;
-    this.type = type;
-  }
-
-  private String getName() {
-    return name;
-  }
-
-  private int getDamage() {
-    return damage;
-  }
+  * Gets the damage of the weapon.
+  */
+  int getDamage();
 
   /**
-   * Returns the weight of the weapon.
+  * Gets the weight of the weapon.
+  */
+  int getWeight();
+
+  /**
+   * Equips a weapon to the character only if it is allowed for an Engineer.
+   *
+   * @param character mainly an engineer
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
    */
-  public int getWeight() {
-    return weight;
-  }
+  public void equipEngineer(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
 
-  private WeaponType getType() {
-    return type;
-  }
+  /**
+   * Equips a weapon to the character only if it is allowed for a Knight.
+   *
+   * @param character mainly a knight
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public void equipKnight(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
 
-  @Override
-  public boolean equals(final Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (!(o instanceof final Weapon weapon)) {
-      return false;
-    }
-    return hashCode() == weapon.hashCode()
-        && damage == weapon.damage
-        && weight == weapon.weight
-        && name.equals(weapon.name)
-        && type == weapon.type;
-  }
+  /**
+   * Equips a weapon to the character only if it is allowed for a Thief.
+   *
+   * @param character mainly a Thief
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public void equipThief(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(Weapon.class, name, damage, weight, type);
-  }
+  /**
+   * Equips a weapon to the character only if it is allowed for a Black Mage.
+   *
+   * @param character mainly an Black mage
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public void equipBlackMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
 
-  @Override
-  public String toString() {
-    return "Weapon{name='%s', damage=%d, weight=%d, type=%s}"
-        .formatted(name, damage, weight, type);
-  }
+  /**
+   * Equips a weapon to the character only if it is allowed for a White Mage.
+   *
+   * @param character mainly a White Mage
+   *
+   * @throws InvalidEquipableWeaponException if it is not allowed
+   */
+  public void equipWhiteMage(AbstractPlayerCharacter character)
+          throws InvalidEquipableWeaponException;
+
+  /**
+   * Checks if a weapon is magic or not.
+   */
+  public boolean isMagic();
 }
